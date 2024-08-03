@@ -190,12 +190,13 @@
 								<!--== Navigation Menu ==-->
 								<ul class="nav navbar-nav">
 									<li class="current"><a href="#header">Home</a></li>
-									<li><a href="#about">About us</a></li>
+									<li><a href="#about">About us</a></li>S
 									<li><a href="#schedule">Schedule</a></li>
 									<li><a href="#blog">Blog</a></li>
 									<li><a href="#prices">Pricing</a></li>
 									<li><a href="#team">Our Team</a></li>
 									<li><a href="#testimonial">Testimonials</a></li>
+									<li><a href="{{ route('login')}}">Log In</a></li>
 									<li><a href="#contact">Contact</a></li>
 								</ul>
 							</div>
