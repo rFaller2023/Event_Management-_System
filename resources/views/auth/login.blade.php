@@ -1,4 +1,4 @@
-{{-- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{route('login')}}">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -70,9 +70,9 @@
         </div>
     </div>
 </div>
-@endsection --}}
+@endsection
 
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Login V2</title>
@@ -177,4 +177,4 @@
 	<script src="login-form/js/main.js"></script>
 
 </body>
-</html>
+</html> --}}
