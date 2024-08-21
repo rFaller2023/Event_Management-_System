@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\AttendController;
+use App\Http\Controllers\AttendeesController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
+use App\Models\Attendees;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +29,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('users');
 
-Route::resource('user', UserController ::class);
+// Route::resource('user', UserController ::class);
 
-
-// Route::middleware('role:admin')->group(function (){
-//     Route::resource('users', UserController::class);
-// });
+Route::resource('user', UserController::class);
+Route::resource('event', EventController::class);
+Route::resource('attend', AttendController::class);

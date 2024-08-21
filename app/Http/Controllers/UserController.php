@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -32,9 +32,28 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        
-        User::create($request->all());
-        return view('user.index');
+        // User::create($request->all());
+        // return view('user.index');
+{
+    // Validate the request data
+    $request->validate([
+        'name' => 'required|string|max:255',  // Name is required
+        'email' => 'required|email',
+        'password' => 'required|min:6',
+    ]);
+
+    // Create a new user
+    $user = new User;
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = bcrypt($request->password);
+    $user->save();
+
+    // Redirect back to the user list with a success message
+    return redirect()->route('user.index')
+        ->with('status', 'User created successfully');
+}
+
     }
 
     /**
@@ -48,9 +67,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
         //
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -67,7 +87,7 @@ class UserController extends Controller
        
         $user->update($data);
     
-        return redirect()->route('users.index');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -77,6 +97,6 @@ class UserController extends Controller
     {
         //
         $user->delete();
-        return redirect()->route('users.index');
+        return redirect()->route('user.index');
     }
 }
