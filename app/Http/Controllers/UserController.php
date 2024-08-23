@@ -99,4 +99,11 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('user.index');
     }
+    public function getUser()
+        {
+            $users = User::all();
+            return response()->json($users);
+    
+        }
+
 }

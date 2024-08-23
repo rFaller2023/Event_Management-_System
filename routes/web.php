@@ -24,6 +24,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', function (){
+    return view('login');
+});
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -37,4 +41,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('user', UserController::class);
 Route::resource('event', EventController::class);
 Route::resource('venue', VenueController::class);
-Route::get('login', [LoginController::class, 'loginUser']);
+// Route::get('/login', [LoginController::class, 'loginUser']);

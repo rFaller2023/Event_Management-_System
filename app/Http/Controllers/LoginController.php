@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Contracts\Validation\Validator;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Validator as FacadesValidator;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -37,7 +37,7 @@ class LoginController extends Controller
             
         //    Http::asForm()->post('https://api.semaphore.co/api/v4/messages', [
         //    'apikey' => env('SMS_API_KEY'),
-        //    'number' => '09950097282', 
+        //    'number' => '09120546525', 
         //    'message' => 'This is your OTP Code: ' . $code,
         //    ]);
 
@@ -64,39 +64,92 @@ class LoginController extends Controller
             ], 500);
         }
     }
-    // public function verifyOTP(Request $request)
+    public function verifyOTP(Request $request)
+    {
+        // dd($request->otp_code);
+        try {
+            $validateOTP = Validator::make($request->all(), [
+                'otp_code' => 'required|digits:6' 
+            ]);
+    
+            // dd($validateOTP);
+            if($validateOTP->fails()){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Validation error',
+                    'errors' => $validateOTP->errors()
+                ], 401);
+            }
+    
+            // Check if the OTP code matches with the user's stored OTP code
+            $user = User::where('otp_code', $request->otp_code)->first();
+            // dd($user);
+    
+            if (!$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Invalid OTP',
+                ], 401);
+            }
+    
+            // Clear the OTP code after successful verification
+            // $user->update(['otp_code' => ]);
+    
+            return response()->json([
+                'status' => true,
+                'message' => 'OTP Verified Successfully',
+                'token' => $user->createToken("API TOKEN")->plainTextToken
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    // public function createUser(Request $request)
     // {
     //     try {
-    //         $validateOTP = Validator::make($request->all(), [
-    //             'otp_code' => 'required|digits:6' 
+    //         //Validated
+    //         $validateUser = Validator::make($request->all(), 
+    //         [
+    //             'name' => 'required',
+    //             'email' => 'required|email|unique:users,email',
+    //             'password' => 'required',
+    //             'address' => 'required',
+    //             'image' => 'required'
     //         ]);
-    
-    //         if($validateOTP->fails()){
+    //         if($request->hasFile('image')){
+    //             $image = $request->file('image');
+    //             $imagePath =$image->store('images', 'public');
+    //         }
+
+    //         if($validateUser->fails()){
     //             return response()->json([
     //                 'status' => false,
-    //                 'message' => 'Validation error',
-    //                 'errors' => $validateOTP->errors()
+    //                 'message' => 'validation error',
+    //                 'errors' => $validateUser->errors()
     //             ], 401);
     //         }
-    
-    //         // Check if the OTP code matches with the user's stored OTP code
-    //         $user = User::where('otp_code', $request->otp_code)->first();
-    
-    //         if (!$user) {
-    //             return response()->json([
-    //                 'status' => false,
-    //                 'message' => 'Invalid OTP',
-    //             ], 401);
-    //         }
-    
-    //         // Clear the OTP code after successful verification
-    //         $user->update(['otp_code' => null]);
-    
+    //         $password = $request->input('password');
+
+    //         $user = User::create([
+    //             'name' => $request->name,
+    //             'email' => $request->email,
+    //             'password' => Hash::make($request->password),
+    //             'address' => $request->address,
+    //             'image' => $imagePath ?? null
+    //         ]);
+
+    //         Mail::to($user->email)->send(new NewUserMail($user, $password));
+
     //         return response()->json([
     //             'status' => true,
-    //             'message' => 'OTP Verified Successfully',
+    //             'message' => 'User Created Successfully',
     //             'token' => $user->createToken("API TOKEN")->plainTextToken
     //         ], 200);
+
     //     } catch (\Throwable $th) {
     //         return response()->json([
     //             'status' => false,

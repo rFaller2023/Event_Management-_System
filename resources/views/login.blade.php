@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login Form</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div class="login-container">
@@ -36,13 +36,13 @@
         </form>
     </div>
 </div>
-    {{-- <script>
+    <script>
         document.getElementById('login-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
     const formData = new FormData(this);
 
-    fetch("api/welcome", {
+    fetch("api/login", {
         method: 'POST',
         body: formData,
         headers: {
@@ -86,7 +86,7 @@ document.getElementById('otp-form').addEventListener('submit', function(event) {
     }).then(data => {
         if (data.status) {
             localStorage.setItem('accessToken', data.accessToken); 
-            window.location.href = '/dashboard'; 
+            window.location.href = '/home'; 
         } else {
             document.getElementById('otpmessage').textContent = data.message;
             document.getElementById('otpmessage').style.color = "red";
@@ -98,8 +98,6 @@ document.getElementById('otp-form').addEventListener('submit', function(event) {
 
            
     </script>
-           
-    </script> --}}
 </body>
 </html>
 

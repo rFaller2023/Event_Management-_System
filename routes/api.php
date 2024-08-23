@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('login', [LoginController::class, 'loginUser']);
-// Route::post('verifyOTP', [LoginController::class, 'verifyOTP']);
+Route::post('verifyOTP', [LoginController::class, 'verifyOTP']);
