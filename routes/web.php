@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\AttendController;
-use App\Http\Controllers\AttendeesController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VenueController;
 use App\Models\Attendees;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,11 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route::get('/home', [HomeController::class, 'index']);
 
 
 // Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('users');
@@ -33,4 +36,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('user', UserController::class);
 Route::resource('event', EventController::class);
-Route::resource('attend', AttendController::class);
+Route::resource('venue', VenueController::class);
+Route::get('login', [LoginController::class, 'loginUser']);

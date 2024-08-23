@@ -13,11 +13,11 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Attendees Table</h2>
+                <h2>Venues Table</h2>
             </div>
             <div class="pull-right mb-2">
                 {{-- @if(Auth::user()->role == 'admin') --}}
-                <a class="btn btn-success" href="{{ route('attend.create') }}">Create Attendee</a>
+                <a class="btn btn-success" href="{{ route('venue.create') }}">Create Venue</a>
                 {{-- @endif --}}
             </div>
         </div>
@@ -41,26 +41,26 @@
                 <th>Photo</th>
                 <th width="280px">Action</th>
             </tr>
-            @foreach ($attends as $attend)
+            @foreach ($venues as $venue)
             <tr>
-                <td>{{ $attend->id }}</td>
-                <td>{{ $attend->name }}</td>
-                <td>{{ $attend->address }}</td>
-                <td>{{ $attend->city }}</td>
-                <td>{{ $attend->state }}</td>
-                <td>{{ $attend->zip_code }}</td>
-                <td>{{ $attend->country }}</td>
+                <td>{{ $venue->id }}</td>
+                <td>{{ $venue->name }}</td>
+                <td>{{ $venue->address }}</td>
+                <td>{{ $venue->city }}</td>
+                <td>{{ $venue->state }}</td>
+                <td>{{ $venue->zip_code }}</td>
+                <td>{{ $venue->country }}</td>
                 <td>
-                    @if($attend->photo_path)
-                    <img src="{{ asset('storage/' . $attend->photo_path) }}" alt="Photo" style="width: 50px; height: 50px;">
+                    @if($venue->photo_path)
+                    <img src="{{ asset('storage/' . $venue->photo_path) }}" alt="Photo" style="width: 50px; height: 50px;">
                     @else
                     <img src="{{ asset('assets/img/hero-bg.jpg') }}" alt="No Photo" style="width: 50px; height: 50px;">
                     @endif
                 </td>
                 <td>
                     {{-- @if(Auth::user()->role == 'admin') --}}
-                    <form action="{{ route('attend.destroy', $attend->id) }}" method="POST">
-                        <a class="btn btn-primary" href="{{ route('attend.edit', $attend->id) }}">Edit</a>
+                    <form action="{{ route('venue.destroy', $venue->id) }}" method="POST">
+                        <a class="btn btn-primary" href="{{ route('venue.edit', $venue->id) }}">Edit</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>

@@ -197,7 +197,7 @@
 									<li><a href="#team">Our Team</a></li>
 									<li><a href="#testimonial">Testimonials</a></li>
 									<li><a href="#contact">Contact</a></li>
-									<li><a href="{{ route('login')}}">Log In</a></li>
+									<li><a href="">Log In</a></li>
 								</ul>
 							</div>
 						</nav>

@@ -250,18 +250,12 @@
               </div> --}}
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="{{route('attend.index')}}" aria-expanded="false" aria-controls="attendees">
+              <a class="nav-link" data-bs-toggle="collapse" href="" aria-expanded="false" aria-controls="venues">
                 {{-- <span class="menu-title">Attendees</span> --}}
-                <a href="/attend">Attendees</a>
+                <a href="/venue">Venues</a>
                 {{-- <i class="mdi mdi-format-list-bulleted menu-icon"></i> --}}
               </a>
-              <div class="collapse" id="forms">
-                <ul class="nav flex-column sub-menu">
-                  {{-- <li class="nav-item">
-                    <a class="nav-link" href="pages/forms/basic_elements.html">Form Elements</a>
-                  </li> --}}
-                </ul>
-              </div>
+              
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
