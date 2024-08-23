@@ -1,197 +1,147 @@
-(function ($) {
-    "use strict";
+jQuery(document).ready(function( $ ) {
 
-    /////////////////////////////////////////////////////
-    var venueAddress = ""; // 
-    /////////////////////////////////////////////////// 
+  // Back to top button
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('.back-to-top').fadeIn('slow');
+    } else {
+      $('.back-to-top').fadeOut('slow');
+    }
+  });
+  $('.back-to-top').click(function(){
+    $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
+    return false;
+  });
 
-    var fn = {
+  // Header fixed on scroll
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('#header').addClass('header-scrolled');
+    } else {
+      $('#header').removeClass('header-scrolled');
+    }
+  });
 
-        // Launch Functions
-        Launch: function () {
-            fn.GoogleMaps();
-            fn.MenuSticky();
-            fn.MainSlider();
-            fn.MainSliderAlign();
-            fn.Navigation();
-            fn.Carousel();
-            fn.Slider();
-            fn.Apps();
-        },
+  if ($(window).scrollTop() > 100) {
+    $('#header').addClass('header-scrolled');
+  }
 
+  // Real view height for mobile devices
+  if (window.matchMedia("(max-width: 767px)").matches) {
+    $('#intro').css({ height: $(window).height() });
+  }
 
+  // Initiate the wowjs animation library
+  new WOW().init();
 
-        // Google Maps
-        GoogleMaps: function () {
+  // Initialize Venobox
+  $('.venobox').venobox({
+    bgcolor: '',
+    overlayColor: 'rgba(6, 12, 34, 0.85)',
+    closeBackground: '',
+    closeColor: '#fff'
+  });
 
-            var markerInfo = "<h4>" + venueAddress + "</h4>";
-            $("#map_canvas").gmap3({
-                map: {
-                    options: {
-                        maxZoom: 15,
-                        streetViewControl: false,
-                        panControl: true,
-                        panControlOptions: {
-                            position: google.maps.ControlPosition.RIGHT_CENTER
-                        },
-                        zoomControl: true,
-                        zoomControlOptions: {
-                            style: google.maps.ZoomControlStyle.LARGE,
-                            position: google.maps.ControlPosition.LEFT_CENTER
-                        },
-                        mapTypeControl: false
+  // Initiate superfish on nav menu
+  $('.nav-menu').superfish({
+    animation: {
+      opacity: 'show'
+    },
+    speed: 400
+  });
 
-                    }
-                },
-                infowindow: {
-                    address: venueAddress,
-                    options: {
-                        content: markerInfo
-                    }
-                },
-                marker: {
-                    address: venueAddress
-                }
-            },
-                "autofit");
-        },
+  // Mobile Navigation
+  if ($('#nav-menu-container').length) {
+    var $mobile_nav = $('#nav-menu-container').clone().prop({
+      id: 'mobile-nav'
+    });
+    $mobile_nav.find('> ul').attr({
+      'class': '',
+      'id': ''
+    });
+    $('body').append($mobile_nav);
+    $('body').prepend('<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>');
+    $('body').append('<div id="mobile-body-overly"></div>');
+    $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
 
-
-
-        // Sticky Menu
-        MenuSticky: function () {
-            var menu = document.querySelector('#menu'),
-                origOffsetY = menu.offsetTop + 100;
-            function scroll() {
-                if ($(window).scrollTop() >= origOffsetY) {
-                    $('#menu').addClass('sticky');
-                    $('#menu').removeClass('fixed');
-                } else {
-                    $('#menu').removeClass('sticky');
-                    $('#menu').addClass('fixed');
-                }
-            }
-            document.onscroll = scroll;
-        },
-
-
-
-        // Align Slider Horizontally
-        MainSliderAlign: function () {
-            var imageWidth, widthFix, container = $('.header-bg');
-            function centerImage() {
-                imageWidth = container.find('img').width();
-                widthFix = imageWidth / 2;
-                container.find('img').css('margin-left', -widthFix);
-            }
-            $(window).on("load resize", centerImage);
-        },
-
-
-
-        // Main FlexSlider
-        MainSlider: function () {
-            $(window).load(function () {
-                $('.main-slider').flexslider({
-                    noCSS: true,
-                    touch: false,
-                    controlNav: false,
-                    directionNav: false,
-                    animation: "fade",
-                    start: function () {
-                        $('#preloader').addClass('ready');
-                    }
-                });
-            });
-        },
-
-
-
-        // One Page Navigation
-        Navigation: function () {
-            $('#menu').onePageNav({
-                currentClass: 'current',
-                scrollSpeed: 500,
-                scrollOffset: 60,
-                scrollThreshold: 0.2,
-                easing: 'swing'
-            });
-        },
-
-
-
-        // Owl Carousel
-        Carousel: function () {
-            var owl = $("#carousel");
-            owl.owlCarousel({
-                itemsCustom : [
-                    [1200, 4],
-                    [970, 3],
-                    [768, 2],
-                    [360, 1]
-                ],
-                navigation : false
-            });
-
-            $(".next").click(function () {
-                owl.trigger('owl.next');
-            });
-
-            $(".prev").click(function () {
-                owl.trigger('owl.prev');
-            });
-        },
-
-
-
-        // FlexSlider
-        Slider: function () {
-            $('.flexslider').flexslider({
-                noCSS: true,
-                touch: false,
-                directionNav: false,
-                animation: "fade"
-            });
-        },
-
-
-
-        
-        // Apps
-        Apps: function () {
-
-            // Accordion
-            $('.accordion-group').accordion();
-
-            // Go Top
-            $('#gotop').click(function () {
-                $('html, body').scrollTo($('#header'), 300);
-            });
-
-            // Go Register
-            $('#goregister').click(function () {
-                $('html, body').scrollTo($('#register'), 300);
-            });
-
-            // Placeholder for MailChimp Form
-            $('#mce-EMAIL').attr('placeholder', 'Your email...');
-
-            // Placeholder's for IE9
-            $('input, textarea').placeholder();
-
-            // Responsive Video's
-            $(".video").fitVids();
-
-            // Fancy Select
-            $('#ticket').fancySelect();
-
-        }
-
-
-    };
-
-    $(document).ready(function () {
-        fn.Launch();
+    $(document).on('click', '.menu-has-children i', function(e) {
+      $(this).next().toggleClass('menu-item-active');
+      $(this).nextAll('ul').eq(0).slideToggle();
+      $(this).toggleClass("fa-chevron-up fa-chevron-down");
     });
 
-})(jQuery);
+    $(document).on('click', '#mobile-nav-toggle', function(e) {
+      $('body').toggleClass('mobile-nav-active');
+      $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+      $('#mobile-body-overly').toggle();
+    });
+
+    $(document).click(function(e) {
+      var container = $("#mobile-nav, #mobile-nav-toggle");
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+        if ($('body').hasClass('mobile-nav-active')) {
+          $('body').removeClass('mobile-nav-active');
+          $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+          $('#mobile-body-overly').fadeOut();
+        }
+      }
+    });
+  } else if ($("#mobile-nav, #mobile-nav-toggle").length) {
+    $("#mobile-nav, #mobile-nav-toggle").hide();
+  }
+
+  // Smooth scroll for the menu and links with .scrollto classes
+  $('.nav-menu a, #mobile-nav a, .scrollto').on('click', function() {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      if (target.length) {
+        var top_space = 0;
+
+        if ($('#header').length) {
+          top_space = $('#header').outerHeight();
+
+          if( ! $('#header').hasClass('header-fixed') ) {
+            top_space = top_space - 20;
+          }
+        }
+
+        $('html, body').animate({
+          scrollTop: target.offset().top - top_space
+        }, 1500, 'easeInOutExpo');
+
+        if ($(this).parents('.nav-menu').length) {
+          $('.nav-menu .menu-active').removeClass('menu-active');
+          $(this).closest('li').addClass('menu-active');
+        }
+
+        if ($('body').hasClass('mobile-nav-active')) {
+          $('body').removeClass('mobile-nav-active');
+          $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+          $('#mobile-body-overly').fadeOut();
+        }
+        return false;
+      }
+    }
+  });
+
+  // Gallery carousel (uses the Owl Carousel library)
+  $(".gallery-carousel").owlCarousel({
+    autoplay: true,
+    dots: true,
+    loop: true,
+    center:true,
+    responsive: { 0: { items: 1 }, 768: { items: 3 }, 992: { items: 4 }, 1200: {items: 5}
+    }
+  });
+
+  // Buy tickets select the ticket type on click
+  $('#buy-ticket-modal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var ticketType = button.data('ticket-type');
+    var modal = $(this);
+    modal.find('#ticket-type').val(ticketType);
+  })
+
+// custom code
+
+});
