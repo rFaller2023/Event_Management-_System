@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Attend;
-use App\Models\Attendees;
+use App\Models\Organizer;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Http\Request;
 
-class AttendController extends Controller
+class ScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class AttendController extends Controller
     public function index()
     {
         //
-        $attends =  Attend::get();
+        $schedules =  Schedule::get();
 
-        return view('attend.index', compact('attends'));
+        return view('schedule.index', compact('schedules'));
     }
 
     /**
@@ -25,7 +25,6 @@ class AttendController extends Controller
     public function create()
     {
         //
-        return view('attend.create');
     }
 
     /**
@@ -34,14 +33,12 @@ class AttendController extends Controller
     public function store(Request $request)
     {
         //
-        Attend::create($request->all());
-        return redirect()->route('attend.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Attend $attends)
+    public function show(Schedule $scedule)
     {
         //
     }
@@ -49,32 +46,24 @@ class AttendController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Attend $attend)
+    public function edit(Schedule $schedule)
     {
-        // dd($attends);
-        return view('attend.edit', compact('attend'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Attend $attends)
+    public function update(Request $request, Schedule $schedule)
     {
         //
-        $attends->update($request->all());
-
-        return redirect()->route('attend.index');
     }
-    
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Attend $attends)
+    public function destroy(Schedule $schedule)
     {
         //
-        $attends->delete();
-
-        return redirect()->route('attend.index');
     }
 }

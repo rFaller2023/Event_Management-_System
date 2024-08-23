@@ -15,12 +15,12 @@
             <div class="pull-left">
                 <h2>Event Table</h2>
             </div>
-            <div class="pull-right mb-2">
+            <div class="pull-right mb-2"> 
                 {{-- @if(Auth::User()->role == 'admin') --}}
                 <a class="btn btn-success" href="{{ route('event.create') }}"> Create Event</a>
                 {{-- @endif --}}
             </div>
-        </div>
+        </div> 
     </div>
    
     @if ($message = Session::get('success'))

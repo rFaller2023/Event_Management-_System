@@ -343,7 +343,7 @@
               </div>
             </div>
 
-            <div class="row schedule-item">
+            <div cljass="row schedule-item">
               <div class="col-md-2"><time>12:00 AM</time></div>
               <div class="col-md-10">
                 <div class="speaker">

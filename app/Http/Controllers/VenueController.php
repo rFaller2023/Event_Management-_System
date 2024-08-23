@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Organizer;
+use App\Models\Venue;
 use Illuminate\Http\Request;
 
-class OrganizerController extends Controller
+class VenueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,6 +13,9 @@ class OrganizerController extends Controller
     public function index()
     {
         //
+        $venues =  Venue::get();
+
+        return view('venue.index', compact('venues'));
     }
 
     /**
@@ -21,6 +24,7 @@ class OrganizerController extends Controller
     public function create()
     {
         //
+        return view('venue.create');
     }
 
     /**
@@ -29,12 +33,14 @@ class OrganizerController extends Controller
     public function store(Request $request)
     {
         //
+        Venue::create($request->all());
+        return redirect()->route('venue.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Organizer $organizer)
+    public function show(Venue $attends)
     {
         //
     }
@@ -42,24 +48,32 @@ class OrganizerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Organizer $organizer)
+    public function edit(Venue $venue)
     {
-        //
+        // dd($attends);
+        return view('venue.edit', compact('venue'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Organizer $organizer)
+    public function update(Request $request, Venue $venues)
     {
         //
+        $venues->update($request->all());
+
+        return redirect()->route('venue.index');
     }
+    
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Organizer $organizer)
+    public function destroy(VenueController $venues)
     {
         //
+        $venues->delete();
+
+        return redirect()->route('venue.index');
     }
 }

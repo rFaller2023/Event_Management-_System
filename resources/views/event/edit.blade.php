@@ -96,7 +96,6 @@
             </div>
         </div> --}}
 
-
         <div class="row">
             <div class="col-md-12">
                 <a class="btn btn-danger btn-back" href="{{ route('event.index') }}">Back</a>
