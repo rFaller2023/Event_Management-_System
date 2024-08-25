@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Schedule;
+use App\Models\Attendee;
 use Illuminate\Http\Request;
 
-class ScheduleController extends Controller
+class AttendeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +13,9 @@ class ScheduleController extends Controller
     public function index()
     {
         //
-        $schedules =  Schedule::get();
+        $attendees =  Attendee::get();
 
-        return view('schedule.index', compact('schedules'));
+        return view('attendee.index', compact('attendees'));
     }
 
     /**
@@ -24,7 +24,7 @@ class ScheduleController extends Controller
     public function create()
     {
         //
-        return view('schedule.create');
+        return view('attendee.create');
     }
 
     /**
@@ -33,14 +33,14 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         //
-        Schedule::create($request->all());
-        return redirect()->route('schedule.index');
+        Attendee::create($request->all());
+        return redirect()->route('attendee.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Schedule $scedule)
+    public function show(Attendee $attendee)
     {
         //
     }
@@ -48,31 +48,31 @@ class ScheduleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Schedule $schedule)
+    public function edit(Attendee $attendee)
     {
         //
-        return view('schedule.edit', compact('schedule'));
+        return view('attendee.edit', compact('attendee'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Schedule $schedule)
+    public function update(Request $request, Attendee $attendee)
     {
         //
-        $schedule->update($request->all());
+        $attendee->update($request->all());
 
-        return redirect()->route('schedule.index');
+        return redirect()->route('attendee.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Schedule $schedule)
+    public function destroy(Attendee $attendee)
     {
         //
-        $schedule->delete();
+        $attendee->delete();
 
-        return redirect()->route('schedule.index');
+        return redirect()->route('attendee.index');
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Schedule;
+use App\Models\Organizer;
 use Illuminate\Http\Request;
 
-class ScheduleController extends Controller
+class OrganizerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +13,9 @@ class ScheduleController extends Controller
     public function index()
     {
         //
-        $schedules =  Schedule::get();
+        $organizers =  Organizer::get();
 
-        return view('schedule.index', compact('schedules'));
+        return view('organizer.index', compact('organizers'));
     }
 
     /**
@@ -24,7 +24,7 @@ class ScheduleController extends Controller
     public function create()
     {
         //
-        return view('schedule.create');
+        return view('organizer.create');
     }
 
     /**
@@ -33,14 +33,14 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         //
-        Schedule::create($request->all());
-        return redirect()->route('schedule.index');
+        Organizer::create($request->all());
+        return redirect()->route('organizer.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Schedule $scedule)
+    public function show(Organizer $organizer)
     {
         //
     }
@@ -48,31 +48,31 @@ class ScheduleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Schedule $schedule)
+    public function edit(Organizer $organizer)
     {
         //
-        return view('schedule.edit', compact('schedule'));
+        return view('organizer.edit', compact('organizer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Schedule $schedule)
+    public function update(Request $request, Organizer $organizer)
     {
         //
-        $schedule->update($request->all());
+        $organizer->update($request->all());
 
-        return redirect()->route('schedule.index');
+        return redirect()->route('organizer.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Schedule $schedule)
+    public function destroy(Organizer $organizer)
     {
         //
-        $schedule->delete();
+        $organizer->delete();
 
-        return redirect()->route('schedule.index');
+        return redirect()->route('organizer.index');
     }
 }
