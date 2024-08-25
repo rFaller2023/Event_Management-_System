@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Schedule;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
-class ScheduleController extends Controller
+class TicketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +14,9 @@ class ScheduleController extends Controller
     public function index()
     {
         //
-        $schedules =  Schedule::get();
+        $tickets =  Ticket::get();
 
-        return view('schedule.index', compact('schedules'));
+        return view('ticket.index', compact('tickets'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ScheduleController extends Controller
     public function create()
     {
         //
-        return view('schedule.create');
+        return view('ticket.create');
     }
 
     /**
@@ -33,14 +34,14 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         //
-        Schedule::create($request->all());
-        return redirect()->route('schedule.index');
+        Ticket::create($request->all());
+        return redirect()->route('ticket.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Schedule $scedule)
+    public function show(Ticket $ticket)
     {
         //
     }
@@ -48,31 +49,31 @@ class ScheduleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Schedule $schedule)
+    public function edit(Ticket $ticket)
     {
         //
-        return view('schedule.edit', compact('schedule'));
+        return view('ticket.edit', compact('ticket'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Schedule $schedule)
+    public function update(Request $request, Ticket $ticket)
     {
         //
-        $schedule->update($request->all());
+        $ticket->update($request->all());
 
-        return redirect()->route('schedule.index');
+        return redirect()->route('ticket.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Schedule $schedule)
+    public function destroy(Ticket $ticket)
     {
         //
-        $schedule->delete();
+        $ticket->delete();
 
-        return redirect()->route('schedule.index');
+        return redirect()->route('ticket.index');
     }
 }

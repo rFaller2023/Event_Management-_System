@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\AttendeeController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrganizerController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VenueController;
 use App\Models\Attendees;
@@ -41,4 +45,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('user', UserController::class);
 Route::resource('event', EventController::class);
 Route::resource('venue', VenueController::class);
+Route::resource('attendee', AttendeeController::class);
+Route::resource('organizer', OrganizerController::class);
+Route::resource('schedule', ScheduleController::class);
+Route::resource('ticket', TicketController::class);
 // Route::get('/login', [LoginController::class, 'loginUser']);
