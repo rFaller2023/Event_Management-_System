@@ -50,12 +50,15 @@
                 </div>
             </div>
         </div>
-
+@php
+$startTime = now()->format('h:i');
+$endTime = now()->addHours(8)->format('h:i');
+@endphp
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="start_time">Start_time:</label>
-                    <input type="text" name="start_time" id="start_time" class="form-control" placeholder="Start time">
+                    <input type="time"  name="start_time" value="{{$startTime}}" id="start_time" class="form-control" placeholder="Start time">
                     @error('date')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror
@@ -65,13 +68,46 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="end_time">End Time:</label>
-                    <input type="text" name="end_time" id="end_time" class="form-control" placeholder="End time">
-                    @error('description')
+                    <input type="time" name="end_time"  value="{{$endTime}}" id="end_time" class="form-control" placeholder="End time">
+                    @error('date')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
         </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="venue_id">Venue:</label>
+                <select name="venue_id" id="venue_id" class="form-control">
+                    <option value="">Select Venue</option>
+                    @foreach($venues as $venue)
+                        <option value="{{ $venue->id }}">{{ $venue->name }}</option>
+                    @endforeach
+                </select>
+                @error('venue_id')
+                <div class="alert alert-danger mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="organizer_id">Organizer:</label>
+            <select name="organizer_id" id="organizer_id" class="form-control">
+                <option value="">Select Organizer</option>
+                @foreach($organizers as $organizer)
+                    <option value="{{ $organizer->id }}">{{ $organizer->name }}</option>
+                @endforeach
+            </select>
+            @error('organizer_id')
+            <div class="alert alert-danger mt-1">{{ $message }}</div>
+            @enderror
+        </div>
+    </div>
+    
 
         <div class="row">
             <div class="col-md-12 text-right">

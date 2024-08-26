@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,8 @@ class ScheduleController extends Controller
     public function create()
     {
         //
-        return view('schedule.create');
+        $events =   Event::all();
+        return view('schedule.create', compact('events')); 
     }
 
     /**
@@ -33,8 +35,13 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         //
+
         Schedule::create($request->all());
+
         return redirect()->route('schedule.index');
+    
+        // Schedule::create($request->all());
+        // return redirect()->route('schedule.index');
     }
 
     /**

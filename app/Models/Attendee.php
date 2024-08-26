@@ -13,4 +13,8 @@ class Attendee extends Model
         'email'
         
     ];
+    public function tickets()
+{
+    return $this->hasMany(Ticket::class);
+}
 }

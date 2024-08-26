@@ -32,19 +32,21 @@
     <table class="table table-bordered">
         <tr>
             <th>#</th>
+            <th>Event ID</th>
             <th>Name</th>
             <th>Description</th>
-            <th>Start Time</th>
-            <th>End Time</th>
+            <th>Start Date</th>
+            <th>End Date</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($schedules as $schedule)
         <tr>
             <td>{{ $schedule->id }}</td>
+            <td>{{ $schedule->event_id }}</td>
             <td>{{ $schedule->name }}</td>
             <td>{{ $schedule->description }}</td>
-            <td>{{ $schedule->start_time }}</td>
-            <td>{{ $schedule->end_time }}</td>
+            <td>{{ $schedule->start_date }}</td>
+            <td>{{ $schedule->end_date }}</td>
             <td>
                 <form action="{{ route('schedule.destroy', $schedule->id) }}" method="POST">
                     {{-- @if(Auth::user()->role == 'admin') --}}

@@ -14,7 +14,7 @@ class VenueController extends Controller
     {
         //
         $venues =  Venue::get();
-
+        
         return view('venue.index', compact('venues'));
     }
 
@@ -33,7 +33,22 @@ class VenueController extends Controller
     public function store(Request $request)
     {
         //
-        Venue::create($request->all());
+        // dd($request->all());
+        $data = $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'zip_code' => 'required',
+            'country' => 'required',
+        ]);
+        // dd($data);
+        if($request->hasFile('photo_path')){
+            $image = $request->file('photo_path');
+            $imagePath = $image->store('images', 'public');
+            $data['photo_path'] = $imagePath;
+        }
+        Venue::create($data);
         return redirect()->route('venue.index');
     }
 

@@ -43,6 +43,7 @@
             </tr>
             @foreach ($venues as $venue)
             <tr>
+              
                 <td>{{ $venue->id }}</td>
                 <td>{{ $venue->name }}</td>
                 <td>{{ $venue->address }}</td>

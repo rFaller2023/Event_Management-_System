@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Organizer;
+use App\Models\Venue;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -24,7 +26,9 @@ class EventController extends Controller
     public function create()
     {
         //
-        return view('event.create');
+       $venues =   Venue::all();
+       $organizers = Organizer::all();
+        return view('event.create', compact('venues', 'organizers'));
     }
 
     /**
@@ -34,6 +38,7 @@ class EventController extends Controller
     {
         //
         Event::create($request->all());
+       
         return redirect()->route('event.index');
     }
 

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('event_id')->constrained();
-            // $table->foreignId('attendee_id')->constrained();
+            $table->foreignId('event_id')->nullable();
+            $table->foreignId('attendee_id')->nullable();
             $table->string('ticket_type')->nullable();
             $table->timestamps();
         });

@@ -32,6 +32,22 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
+                    <label for="event_id">Event:</label>
+                    <select name="event_id" id="event_id" class="form-control">
+                        <option value="">Select Event</option>
+                        @foreach($events as $event)
+                            <option value="{{ $event->id }}">{{ $event->id }}</option>
+                        @endforeach
+                    </select>
+                    @error('event_id')
+                    <div class="alert alert-danger mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" name="name" id="name" class="form-control" placeholder="Name">
                     @error('name')
@@ -51,12 +67,14 @@
             </div>
         </div>
 
+
+
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="start_time">Start Time:</label>
-                    <input type="text" name="start_time" id="start_time" class="form-control" placeholder="Start time">
-                    @error('start_time')
+                    <label for="start_date">Start Date:</label>
+                    <input type="date" name="start_date" id="start_date" class="form-control" placeholder="Start Date">
+                    @error('date')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror
                 </div>
@@ -64,9 +82,9 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="end_time">End Time:</label>
-                    <input type="text" name="end_time" id="end_time" class="form-control" placeholder="End time">
-                    @error('end_time')
+                    <label for="end_date">End Date:</label>
+                    <input type="date"  name="end_date"  id="end_date" class="form-control" placeholder="End Date">
+                    @error('date')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror
                 </div>

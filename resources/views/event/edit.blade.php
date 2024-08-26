@@ -75,7 +75,7 @@
         </div>
 
 
-        {{-- <div class="row">
+        <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="venue_id">Venue ID:</label>
@@ -84,8 +84,8 @@
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror
                 </div>
-            </div> --}}
-            {{-- <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="organizer_id">Organizer ID:</label>
                     <input type="text" name="organizer_id" value="{{ $event->organizer_id }}" class="form-control" placeholder="Organizer ID">
@@ -94,7 +94,7 @@
                     @enderror
                 </div>
             </div>
-        </div> --}}
+        </div>
 
         <div class="row">
             <div class="col-md-12">

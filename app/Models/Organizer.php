@@ -12,4 +12,9 @@ class Organizer extends Model
         'name',
         'contact_info'
     ];
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
 }

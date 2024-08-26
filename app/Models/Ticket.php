@@ -14,4 +14,12 @@ class Ticket extends Model
         'ticket_type'
         
     ];
+    public function event()
+    {
+        return $this->belongsTo(Event::class);  
+    }
+    public function attendee()
+    {
+        return $this->belongsTo(Attendee::class);
+    }
 }

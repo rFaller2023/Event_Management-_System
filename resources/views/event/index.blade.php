@@ -36,6 +36,8 @@
             <th>Description</th>
             <th>Start Time</th>
             <th>End Time</th>
+            <th>Venue ID</th>
+            <th>Organizer ID</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($events as $event)
@@ -45,6 +47,8 @@
             <td>{{ $event->description }}</td>
             <td>{{ $event->start_time }}</td>
             <td>{{ $event->end_time }}</td>
+            <td>{{ $event->venue_id }}</td>
+            <td>{{ $event->organizer_id }}</td>
             <td>
                 <form action="{{ route('event.destroy', $event->id) }}" method="POST">
                     {{-- @if(Auth::User()->role == 'admin') --}}

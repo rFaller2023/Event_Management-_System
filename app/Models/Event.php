@@ -16,8 +16,21 @@ class Event extends Model
         'end_time',
         'venue_id',
         'organizer_id',
-        'created_at',
-        'updated_at'
+    
     ];
+
+    public function event(){
+        return $this->hasOne(Venue::class);
+    }
+    public function schedule()
+    {
+        return $this->hasMany(Schedule::class);
+    }
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
+    
 }
  

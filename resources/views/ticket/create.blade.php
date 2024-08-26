@@ -29,11 +29,16 @@
     <form action="{{ route('ticket.store') }}" method="POST">
         @csrf
 
-        {{-- <div class="row">
+        <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="event_id">Event ID:</label>
-                    <input type="text" name="event_id" id="event_id" class="form-control" placeholder="Event ID">
+                    <label for="event_id">Event:</label>
+                    <select name="event_id" id="event_id" class="form-control">
+                        <option value="">Select Event</option>
+                        @foreach($events as $event)
+                            <option value="{{ $event->id }}">{{ $event->id }}</option>
+                        @endforeach
+                    </select>
                     @error('event_id')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror
@@ -42,14 +47,19 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="attendee_id">Attendee ID:</label>
-                    <input type="text" name="attendee_id" id="attendee_id" class="form-control" placeholder="Attendee ID">
+                    <label for="attendee_id">Attendee:</label>
+                    <select name="attendee_id" id="attendee_id" class="form-control">
+                        <option value="">Select Attendee</option>
+                        @foreach($attendees as $attendee)
+                            <option value="{{ $attendee->id }}">{{ $attendee->name }}</option>
+                        @endforeach
+                    </select>
                     @error('attendee_id')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
-        </div> --}}
+            
 
         <div class="row">
             <div class="col-md-12">

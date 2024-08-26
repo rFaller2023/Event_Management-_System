@@ -32,16 +32,16 @@
     <table class="table table-bordered">
         <tr>
             <th>#</th>
-            {{-- <th>Event ID</th>
-            <th>Attendee ID</th> --}}
+            <th>Event ID</th>
+            <th>Attendee ID</th>
             <th>Ticket Type</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($tickets as $ticket)
         <tr>
             <td>{{ $ticket->id }}</td>
-            {{-- <td>{{ $ticket->event_id }}</td>
-            <td>{{ $ticket->attendee_id }}</td> --}}
+            <td>{{ $ticket->event_id }}</td>
+            <td>{{ $ticket->attendee_id }}</td>
             <td>{{ $ticket->ticket_type }}</td>
             <td>
                 <form action="{{ route('ticket.destroy', $ticket->id) }}" method="POST">
