@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login Form</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
         <form id="login-form">
-            <div class= "form-group">
-                <label for="email">Email :</label>
+            <div class="form-group">
+                <label for="email">Email:</label>
                 <input type="text" name="email" placeholder="Email" required>
             </div>
-            <div class= "form-group">
+            <div class="form-group">
                 <label for="password">Password:</label>
-            <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Password" required>
             </div>
-            <div id="message" class="text-danger mb-3" style= "display: none">
+            <div id="message" class="text-danger mb-3" style="display: none;">
                 Invalid Credentials!
-            
             </div>
             <button type="submit">Login</button>
         </form>
-    
-    <div class="otp-container" id="otp-container" style="display: none;">
-        <h2>Enter OTP</h2>
-        <form id="otp-form">
-            <h3 id="otpmessage"></h3>
-            <label for="otp_code" class="form-label">OTP:</label>
-            <input type="number" name="otp_code" class="form-control" id="otp_code" placeholder="Enter OTP" required>
-            <br>
-            <button type="submit">Verify OTP</button>
-        </form>
+
+        <div class="otp-container" id="otp-container" style="display: none;">
+            <h2>Enter OTP</h2>
+            <form id="otp-form">
+                <h3 id="otpmessage"></h3>
+                <label for="otp_code" class="form-label">OTP:</label>
+                <input type="number" name="otp_code" class="form-control" id="otp_code" placeholder="Enter OTP" required>
+                <br>
+                <button type="submit">Verify OTP</button>
+            </form>
+        </div>
+
+        <!-- "Don't have an account?" section inside the container -->
+        <div class="register-link">
+            <p>Don't have an account? <a href="{{url('register')}}">Sign up here</a></p>
+        </div>
     </div>
-</div>
+</body>
+</html>
+
+
     <script>
         document.getElementById('login-form').addEventListener('submit', function(event) {
     event.preventDefault();

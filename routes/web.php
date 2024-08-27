@@ -43,6 +43,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('users');
 
 // Route::resource('user', UserController ::class);
+Route::get('/login', function () { return view('auth.login'); });
+Route::get('/register', function () { return view('auth.register'); });
 
 Route::resource('user', UserController::class);
 Route::resource('event', EventController::class);

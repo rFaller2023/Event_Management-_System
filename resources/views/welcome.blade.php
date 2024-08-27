@@ -54,12 +54,13 @@
           <li class="menu-active"><a href="#intro">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#speakers">Speakers</a></li>
-          <li><a href="#schedule">Schedule</a></li>
+          {{-- <li><a href="#schedule">Schedule</a></li> --}}
           <li><a href="#venue">Venue</a></li>
-          <li><a href="#hotels">Hotels</a></li>
-          <li><a href="#gallery">Gallery</a></li>
+          {{-- <li><a href="#hotels">Hotels</a></li> --}}
+          {{-- <li><a href="#gallery">Gallery</a></li> --}}
           <li><a href="#supporters">Sponsors</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="{{url('login')}}">Login</a></li>
           <li class="buy-tickets"><a href="#buy-tickets">Buy Tickets</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
@@ -72,9 +73,9 @@
   <section id="intro">
     <div class="intro-container wow fadeIn">
       <h1 class="mb-4 pb-0">The Annual<br><span>Marketing</span> Conference</h1>
-      <p class="mb-4 pb-0">10-12 December, Downtown Conference Center, New York</p>
-      <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
-        data-autoplay="true"></a>
+      {{-- <p class="mb-4 pb-0">10-12 December, Downtown Conference Center, New York</p> --}}
+      {{-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
+        data-autoplay="true"></a> --}}
       <a href="#about" class="about-btn scrollto">About The Event</a>
     </div>
   </section>
@@ -107,7 +108,7 @@
           </div>
           <div class="col-lg-3">
             <h3>When</h3>
-            <p>Monday to Wednesday<br>10-12 December</p>
+            <p>Monday to Wednesday<br>10-12 August</p>
           </div>
         </div>
       </div>
@@ -222,7 +223,7 @@
     <!--==========================
       Schedule Section
     ============================-->
-    <section id="schedule" class="section-with-bg">
+    {{-- <section id="schedule" class="section-with-bg">
       <div class="container wow fadeInUp">
         <div class="section-header">
           <h2>Event Schedule</h2>
@@ -244,10 +245,10 @@
         <h3 class="sub-heading">Voluptatem nulla veniam soluta et corrupti consequatur neque eveniet officia. Eius
           necessitatibus voluptatem quis labore perspiciatis quia.</h3>
 
-        <div class="tab-content row justify-content-center">
+        <div class="tab-content row justify-content-center"> --}}
 
           <!-- Schdule Day 1 -->
-          <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
+          {{-- <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
 
             <div class="row schedule-item">
               <div class="col-md-2"><time>09:30 AM</time></div>
@@ -395,11 +396,11 @@
               </div>
             </div>
 
-          </div>
+          </div> --}}
           <!-- End Schdule Day 2 -->
 
           <!-- Schdule Day 3 -->
-          <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-3">
+          {{-- <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-3">
 
             <div class="row schedule-item">
               <div class="col-md-2"><time>10:00 AM</time></div>
@@ -467,14 +468,14 @@
               </div>
             </div>
 
-          </div>
+          </div> --}}
           <!-- End Schdule Day 2 -->
 
-        </div>
+        {{-- </div>
 
       </div>
 
-    </section>
+    </section> --}}
 
     <!--==========================
       Venue Section
@@ -580,7 +581,7 @@
     <!--==========================
       Hotels Section
     ============================-->
-    <section id="hotels" class="section-with-bg wow fadeInUp">
+    {{-- <section id="hotels" class="section-with-bg wow fadeInUp">
 
       <div class="container">
         <div class="section-header">
@@ -643,12 +644,12 @@
         </div>
       </div>
 
-    </section>
+    </section> --}}
 
     <!--==========================
       Gallery Section
     ============================-->
-    <section id="gallery" class="wow fadeInUp">
+    {{-- <section id="gallery" class="wow fadeInUp">
 
       <div class="container">
         <div class="section-header">
@@ -668,7 +669,7 @@
         <a href="img/gallery/8.jpg" class="venobox" data-gall="gallery-carousel"><img src="img/gallery/8.jpg" alt=""></a>
       </div>
 
-    </section>
+    </section> --}}
 
     <!--==========================
       Sponsors Section
@@ -739,7 +740,7 @@
     <!--==========================
       Subscribe Section
     ============================-->
-    <section id="subscribe">
+    {{-- <section id="subscribe">
       <div class="container wow fadeInUp">
         <div class="section-header">
           <h2>Newsletter</h2>
@@ -758,7 +759,7 @@
         </form>
 
       </div>
-    </section>
+    </section> --}}
 
     <!--==========================
       Buy Ticket Section

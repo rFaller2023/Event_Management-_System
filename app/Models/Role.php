@@ -9,10 +9,10 @@ class Role extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'admin',
-        'organizer',
-        'attendee',
-        'guest',
+        'name',
+        // 'organizer',
+        // 'attendee',
+        // 'guest',
     ];
     
 }
