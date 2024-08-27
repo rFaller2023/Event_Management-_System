@@ -6,10 +6,14 @@
     <meta charset="UTF-8">
     <title>Users</title>
 
-     <!-- Bootstrap CSS -->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
+    <!-- SweetAlert2 Script -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -21,7 +25,7 @@
                 <h2>Users</h2>
             </div>
             <div class="pull-right mb-2">
-                <a class="btn btn-success" href="{{route('user.create')}}">Add User</a>
+                <a class="btn btn-success" href="{{ route('user.create') }}">Add User</a>
             </div>
         </div>
     </div>
@@ -31,44 +35,56 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    <div class = "table-responsive">
-    <table class="table table-bordered">
-        <tr>
-            <th>#</th>
-            {{-- <th>Role</th> --}}
-            <th>Name</th>
-            <th>Email</th>
-            {{-- <th>Password</th> --}}
-            <th width="280px">Action</th>
-        </tr>
-        
-        
-        <tr>
-            @foreach($user as $users)
-            {{-- @if($users->role == 'spectator') --}}
-            {{-- <td>{{++$i}}</td> --}}
-            <td>{{$users->id}}</td>
-            {{-- <td>{{$users->role}}</td> --}}
-            <td>{{$users->name}}</td>
-            <td>{{$users->email}}</td>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th width="280px">Action</th>
+            </tr>
             
-            <td>
-                <form action="{{route('user.destroy', $users->id)}}" method="POST">
-                    <a class="btn btn-primary" href="{{route('user.edit', $users->id)}}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </td>
-        </tr>
-        {{-- @endif --}}
-        @endforeach
-    </table>
+            @foreach($user as $users)
+            <tr>
+                <td>{{ $users->id }}</td>
+                <td>{{ $users->name }}</td>
+                <td>{{ $users->email }}</td>
+                
+                <td>
+                    <form id="delete-form-{{ $users->id }}" action="{{ route('user.destroy', $users->id) }}" method="POST" style="display: inline;">
+                        <a class="btn btn-primary" href="{{ route('user.edit', $users->id) }}">Edit</a>
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $users->id }})">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </table>
     </div>
     <div class="pull-right">
-        <a class="btn btn-primary" href="{{ route('home') }}" enctype="multipart/form-data"> Back</a>
+        <a class="btn btn-primary" href="{{ route('home') }}">Back</a>
     </div>
 </div>
+
+<script>
+function confirmDelete(userId) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('delete-form-' + userId).submit();
+        }
+    });
+}
+</script>
 
 </body>
 </html>

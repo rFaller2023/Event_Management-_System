@@ -4,8 +4,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Attendees Table</title>
+    <title>Venues Table</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -43,7 +44,6 @@
             </tr>
             @foreach ($venues as $venue)
             <tr>
-              
                 <td>{{ $venue->id }}</td>
                 <td>{{ $venue->name }}</td>
                 <td>{{ $venue->address }}</td>
@@ -60,11 +60,11 @@
                 </td>
                 <td>
                     {{-- @if(Auth::user()->role == 'admin') --}}
-                    <form action="{{ route('venue.destroy', $venue->id) }}" method="POST">
+                    <form id="delete-form-{{ $venue->id }}" action="{{ route('venue.destroy', $venue->id) }}" method="POST" style="display: inline;">
                         <a class="btn btn-primary" href="{{ route('venue.edit', $venue->id) }}">Edit</a>
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $venue->id }})">Delete</button>
                     </form>
                     {{-- @endif --}}
                 </td>
@@ -76,6 +76,28 @@
         <a class="btn btn-primary" href="{{ route('home') }}">Back</a>
     </div>
 </div>
+
+<!-- Combined Bootstrap and Dependencies Script -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+function confirmDelete(venueId) {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'Cancel'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      document.getElementById('delete-form-' + venueId).submit();
+    }
+  });
+}
+</script>
 
 </body>
 </html>

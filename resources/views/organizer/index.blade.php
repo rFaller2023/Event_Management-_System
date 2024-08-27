@@ -5,7 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Organizers Table</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- SweetAlert2 Script -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -28,6 +33,7 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+
     <div class="table-responsive">
         <table class="table table-bordered">
             <tr>
@@ -43,11 +49,11 @@
                 <td>{{ $organizer->contact_info }}</td>
                 <td>
                     {{-- @if(Auth::user()->role == 'admin') --}}
-                    <form action="{{ route('organizer.destroy', $organizer->id) }}" method="POST">
+                    <form id="delete-form-{{ $organizer->id }}" action="{{ route('organizer.destroy', $organizer->id) }}" method="POST" style="display: inline;">
                         <a class="btn btn-primary" href="{{ route('organizer.edit', $organizer->id) }}">Edit</a>
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $organizer->id }})">Delete</button>
                     </form>
                     {{-- @endif --}}
                 </td>
@@ -55,10 +61,30 @@
             @endforeach
         </table>
     </div>
+
     <div class="pull-right">
         <a class="btn btn-primary" href="{{ route('home') }}">Back</a>
     </div>
 </div>
+
+<script>
+function confirmDelete(organizerId) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('delete-form-' + organizerId).submit();
+        }
+    });
+}
+</script>
 
 </body>
 </html>

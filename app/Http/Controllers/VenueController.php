@@ -84,11 +84,15 @@ class VenueController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(VenueController $venues)
+    public function destroy($id)
     {
         //
-        $venues->delete();
 
-        return redirect()->route('venue.index');
+        $venue = Venue::findOrFail($id);
+        $venue->delete();
+        return redirect()->route('venue.index')->with('success', 'Venue deleted successfully.');
+        // $venues->delete();
+
+        // return redirect()->route('venue.index');
     }
 }
