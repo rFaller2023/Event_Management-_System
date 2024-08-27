@@ -35,7 +35,6 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-<<<<<<< HEAD
     <div class = "table-responsive">
     <table class="table table-bordered">
         <tr>
@@ -71,34 +70,6 @@
         {{-- @endif --}}
         @endforeach
     </table>
-=======
-    <div class="table-responsive">
-        <table class="table table-bordered">
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th width="280px">Action</th>
-            </tr>
-            
-            @foreach($user as $users)
-            <tr>
-                <td>{{ $users->id }}</td>
-                <td>{{ $users->name }}</td>
-                <td>{{ $users->email }}</td>
-                
-                <td>
-                    <form id="delete-form-{{ $users->id }}" action="{{ route('user.destroy', $users->id) }}" method="POST" style="display: inline;">
-                        <a class="btn btn-primary" href="{{ route('user.edit', $users->id) }}">Edit</a>
-                        @csrf
-                        @method('DELETE')
-                        <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $users->id }})">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </table>
->>>>>>> 04ded14fe18abb01d7dc959babe3c641f049a32a
     </div>
     <div class="pull-right">
         <a class="btn btn-primary" href="{{ route('home') }}">Back</a>
