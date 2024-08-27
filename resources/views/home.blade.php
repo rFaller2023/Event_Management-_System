@@ -76,10 +76,35 @@
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
-              </div>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" onclick="confirmLogout()">
+                    <i class="mdi mdi-logout me-2 text-primary"></i> Signout
+                  </a>
+                  </div>
+
+                  <script>
+                  function confirmLogout() {
+                    Swal.fire({
+                      title: 'Are you sure?',
+                      text: "You will be logged out!",
+                      icon: 'warning',
+                      showCancelButton: true,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: 'Yes, logout!',
+                      cancelButtonText: 'Cancel'
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        logout();  // Call your logout function here
+                      }
+                    });
+                  }
+
+                  function logout() {
+                    // Add your actual logout logic here, e.g., submitting a form or redirecting
+                    window.location.href = '/';
+                  }
+                  </script>
             </li>
             <li class="nav-item d-none d-lg-block full-screen-link">
               <a class="nav-link">
@@ -221,7 +246,7 @@
                 {{-- <i class="menu-arrow"></i> --}}
                 {{-- <i class="mdi mdi-crosshairs-gps menu-icon"></i>[] --}}
               </a>
-              
+
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="{{route('event.index')}}" aria-expanded="false" aria-controls="manage_events">
@@ -229,7 +254,7 @@
                 <a href="/event">Manage Events</a>
                 {{-- <i class="mdi mdi-contacts menu-icon"></i> --}}
               </a>
-              
+
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="{{route('venue.index')}}" aria-expanded="false" aria-controls="venues">
@@ -237,7 +262,7 @@
                 <a href="/venue">Venues</a>
                 {{-- <i class="mdi mdi-format-list-bulleted menu-icon"></i> --}}
               </a>
-              
+
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="{{route('attendee.index')}}" aria-expanded="false" aria-controls="charts">
@@ -258,7 +283,7 @@
                 <a href="/organizer">Organizers</a>
                 {{-- <i class="mdi mdi-table-large menu-icon"></i> --}}
               </a>
-         
+
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="{{route('schedule.index')}}" aria-expanded="false" aria-controls="auth">
@@ -267,7 +292,7 @@
                 {{-- <i class="menu-arrow"></i> --}}
                 {{-- <i class="mdi mdi-lock menu-icon"></i> --}}
               </a>
-             
+
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="{{route('ticket.index')}}" aria-expanded="false" aria-controls="auth">
@@ -276,8 +301,8 @@
                 {{-- <i class="menu-arrow"></i> --}}
                 {{-- <i class="mdi mdi-lock menu-icon"></i> --}}
               </a>
-             
-             
+
+
           </ul>
         </nav>
         <!-- partial -->
@@ -288,7 +313,7 @@
               <h3 class="page-title">
                 {{-- <span class="page-title-icon bg-gradient-primary text-white me-2">
                   <i class="mdi mdi-home"></i>
-                 
+
                 </span> Dashboard --}}
 
               {{-- </h3>
@@ -300,9 +325,9 @@
                 </ul>
               </nav>
             </div>
-           
-                     
-                 
+
+
+
             <div class="row">
               <div class="col-lg-5 grid-margin stretch-card">
                 <div class="card">
@@ -506,6 +531,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{asset('assets/vendors/js/vendor.bundle.base.js')}}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->

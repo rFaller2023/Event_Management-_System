@@ -21,7 +21,15 @@ class DatabaseSeeder extends Seeder
                 // 'address' => 'Brgy. Lamak Hilongos, Leyte',
                 'otp_code' => 1,
                 'password'=>  Hash::make('12345678'),
+            ],
+            [
+                'name'=>'Fred Fritz',
+                'email' => 'fredfritza@gmail.com',
+                // 'address' => 'Mabini St. Hilongos, Leyte',
+                'otp_code' => 2,
+                'password'=>  Hash::make('12345678'),
             ]
+
             ]);
     }
 }
