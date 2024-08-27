@@ -33,7 +33,7 @@
     <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
- 
+
 
         <div class="row">
             <div class="col-md-6">
@@ -41,6 +41,16 @@
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name">
                     @error('name')
+                    <div class ="alert alert-danger mt-1">{{ $message}}</div>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="role">Role:</label>
+                    <input type="text" id="role" name="role" class="form-control" placeholder="Enter Role">
+                    @error('role')
                     <div class ="alert alert-danger mt-1">{{ $message}}</div>
                     @enderror
                 </div>
@@ -69,7 +79,7 @@
             </div>
         </div>
 
-    
+
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

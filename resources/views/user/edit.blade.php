@@ -7,7 +7,7 @@
     <title>User</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    
+
     </style>
 </head>
 <body>
@@ -23,13 +23,13 @@
             </div>
         </div>
     </div>
-   
+
     @if(session('status'))
     <div class="alert alert-success mb-1 mt-1">
         {{ session('status') }}
     </div>
     @endif
- 
+
     <form action="{{ route('user.update', $user->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -46,7 +46,19 @@
                 </div>
             </div>
         </div>
-   
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <label for="role"><strong>Role :</strong></label>
+                    <input type="text" name="role_name" value="{{ $user->role_name }}" class="form-control" placeholder="Enter Role">
+                    @error('role_name')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -71,9 +83,9 @@
             </div>
         </div>
 
-            
+
         <button type="submit" class="btn btn-primary ml-3">Submit</button>
-          
+
     </form>
 </div>
 @endsection

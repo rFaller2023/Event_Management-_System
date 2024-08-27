@@ -38,11 +38,12 @@
             {{-- <th>Role</th> --}}
             <th>Name</th>
             <th>Email</th>
+            <th>Role</th>
             {{-- <th>Password</th> --}}
             <th width="280px">Action</th>
         </tr>
-        
-        
+
+
         <tr>
             @foreach($user as $users)
             {{-- @if($users->role == 'spectator') --}}
@@ -51,7 +52,8 @@
             {{-- <td>{{$users->role}}</td> --}}
             <td>{{$users->name}}</td>
             <td>{{$users->email}}</td>
-            
+            <td>{{$users->role_name}}</td>
+
             <td>
                 <form action="{{route('user.destroy', $users->id)}}" method="POST">
                     <a class="btn btn-primary" href="{{route('user.edit', $users->id)}}">Edit</a>

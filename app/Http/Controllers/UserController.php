@@ -38,6 +38,7 @@ class UserController extends Controller
     // Validate the request data
     $request->validate([
         'name' => 'required|string|max:255',  // Name is required
+        'role_name' => 'required|string|max:255',
         'email' => 'required|email',
         'password' => 'required|min:6',
     ]);
@@ -46,6 +47,7 @@ class UserController extends Controller
     $user = new User;
     $user->name = $request->name;
     $user->email = $request->email;
+    $user->role = $request->role;
     $user->password = bcrypt($request->password);
     $user->save();
 
@@ -79,14 +81,9 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         //
-        $data =  $request->validate([
-           
-            'email' => 'required',
-         
-        ]);
-       
-        $user->update($data);
-    
+        // dd($request->all());
+        $user->update($request->all());
+
         return redirect()->route('user.index');
     }
 
@@ -103,7 +100,7 @@ class UserController extends Controller
         {
             $users = User::all();
             return response()->json($users);
-    
+
         }
 
 }

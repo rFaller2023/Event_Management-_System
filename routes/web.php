@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AttendeeController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
@@ -53,4 +54,5 @@ Route::resource('attendee', AttendeeController::class);
 Route::resource('organizer', OrganizerController::class);
 Route::resource('schedule', ScheduleController::class);
 Route::resource('ticket', TicketController::class);
+Route::resource('about', AboutController::class);
 // Route::get('/login', [LoginController::class, 'loginUser']);

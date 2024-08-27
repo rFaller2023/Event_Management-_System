@@ -249,6 +249,14 @@
 
             </li>
             <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="{{route('about.index')}}" aria-expanded="false" aria-controls="ui-basic">
+                  <a href="/about">Abouts</a>
+                  {{-- <i class="menu-arrow"></i> --}}
+                  {{-- <i class="mdi mdi-crosshairs-gps menu-icon"></i>[] --}}
+                </a>
+
+              </li>
+            <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="{{route('event.index')}}" aria-expanded="false" aria-controls="manage_events">
                 {{-- <span class="menu-title">Manage Events</span> --}}
                 <a href="/event">Manage Events</a>
@@ -266,7 +274,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="{{route('attendee.index')}}" aria-expanded="false" aria-controls="charts">
-                <a href="/attendee">Attendess</a>
+                <a href="/attendee">Attendees</a>
                 {{-- <i class="mdi mdi-chart-bar menu-icon"></i> --}}
               </a>
               <div class="collapse" id="charts">
