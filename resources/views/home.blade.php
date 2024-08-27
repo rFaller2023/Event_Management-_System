@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
+    
   </head>
   <body>
     <div class="container-scroller">
@@ -76,6 +77,7 @@
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
+<<<<<<< HEAD
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" onclick="confirmLogout()">
                     <i class="mdi mdi-logout me-2 text-primary"></i> Signout
@@ -105,6 +107,12 @@
                     window.location.href = '/';
                   }
                   </script>
+=======
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="">
+                  <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
+              </div>
+>>>>>>> 04ded14fe18abb01d7dc959babe3c641f049a32a
             </li>
             <li class="nav-item d-none d-lg-block full-screen-link">
               <a class="nav-link">
@@ -324,6 +332,7 @@
 
                 </span> Dashboard --}}
 
+<<<<<<< HEAD
               {{-- </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
@@ -523,6 +532,8 @@
               </div>
             </div>
           </div> --}}
+=======
+>>>>>>> 04ded14fe18abb01d7dc959babe3c641f049a32a
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">

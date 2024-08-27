@@ -74,11 +74,11 @@ class TicketController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ticket $ticket)
+    public function destroy($id)
     {
         //
+        $ticket = Ticket::findOrFail($id);
         $ticket->delete();
-
-        return redirect()->route('ticket.index');
+        return redirect()->route('ticket.index')->with('success', 'Ticket deleted successfully.');
     }
 }
