@@ -54,7 +54,6 @@
         <ul class="nav-menu">
           <li class="menu-active"><a href="#intro">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#supporters">Sponsors</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="{{url('login')}}">Login</a></li>
           {{-- <li class="buy-tickets"><a href="#buy-tickets">Buy Tickets</a></li> --}}
@@ -83,92 +82,31 @@
     ============================-->
     <section id="about">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <h2>About The Event</h2>
-            @foreach($abouts as $about)
-            <p>{{ $about->abouts_description }} </p>
+          <div class="section-title">
+              <span>About The Event</span>
+              <h2>About The Event</h2>
+              <p>Here are the event details:</p>
           </div>
-          <div class="col-lg-3">
-            <h3>Location</h3>
-            <p>{{ $about->abouts_location }}</p>
+          <div class="row">
+              @foreach($abouts as $about)
+              <div class="col-lg-6">
+                  <ul>
+                      <li><i class="bi bi-chevron-right"></i> <strong>Description:</strong> <span>{{ $about->abouts_description }}</span></li>
+                      <li><i class="bi bi-chevron-right"></i> <strong>Location:</strong> <span>{{ $about->abouts_location }}</span></li>
+                  </ul>
+              </div>
+              <div class="col-lg-6">
+                  <ul>
+                      <li><i class="bi bi-chevron-right"></i> <strong>Date:</strong> <span>{{ $about->abouts_date }}</span></li>
+                  </ul>
+              </div>
+              @endforeach
           </div>
-          <div class="col-lg-3">
-            <h3>Date</h3>
-            <p>{{ $about->abouts_date }}</p>
-          </div>
-        </div>
-        @endforeach
       </div>
-    </section>
+  </section>
+  
 
     
-
-    <!--==========================
-      Sponsors Section
-    ============================-->
-    <section id="supporters" class="section-with-bg wow fadeInUp">
-
-      <div class="container">
-        <div class="section-header">
-          <h2>Sponsors</h2>
-        </div>
-
-        <div class="row no-gutters supporters-wrap clearfix">
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="supporter-logo">
-              <img src="img/supporters/1.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="supporter-logo">
-              <img src="img/supporters/2.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="supporter-logo">
-              <img src="img/supporters/3.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="supporter-logo">
-              <img src="img/supporters/4.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="supporter-logo">
-              <img src="img/supporters/5.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="supporter-logo">
-              <img src="img/supporters/6.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="supporter-logo">
-              <img src="img/supporters/7.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="supporter-logo">
-              <img src="img/supporters/8.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
 
 
 
