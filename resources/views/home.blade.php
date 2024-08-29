@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Dashboard</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('assets/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/ti-icons/css/themify-icons.css')}}">
@@ -52,28 +52,19 @@
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-          <a class="navbar-brand brand-logo" href="index.html"><img src="{{asset('assets/images/logo.svg" alt="logo')}}" /></a>
+          <a class="navbar-brand brand-logo" href="index.html"></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('assets/images/logo-mini.svg" alt="logo')}}" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
-          <div class="search-field d-none d-md-block">
-            <form class="d-flex align-items-center h-100" action="#">
-              <div class="input-group">
-                <div class="input-group-prepend bg-transparent">
-                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
-              </div>
-            </form>
-          </div>
+
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                  <img src="{{asset('assets/images/faces/face1.jpg')}}" alt="image">
+                  <img src="{{asset('assets/images/faces/face.jfif')}}" alt="image">
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
@@ -83,9 +74,9 @@
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown"> 
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="javascript:void(0);" onclick="signout()">
-                    <i class="mdi mdi-logout me-2 text-primary"></i> Signout 
+                    <i class="mdi mdi-logout me-2 text-primary"></i> Signout
                   </a>
-                  
+
                   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                   <script>
                   function signout() {
@@ -100,12 +91,12 @@
                     }).then((result) => {
                       if (result.isConfirmed) {
                         // Replace with your sign-out URL or form submission
-                        window.location.href = '/'; 
+                        window.location.href = '/';
                       }
                     })
                   }
                   </script>
-                  
+
             </li>
             <li class="nav-item d-none d-lg-block full-screen-link">
               <a class="nav-link">
@@ -224,7 +215,7 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                  <img src="{{asset('assets/images/faces/face1.jpg')}}" alt="profile" />
+                  <img src="{{asset('assets/images/faces/face.jfif')}}" alt="profile" />
                   <span class="login-status online"></span>
                   <!--change to offline or busy as needed-->
                 </div>
