@@ -83,10 +83,31 @@
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="">
-                  <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
-              </div>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="javascript:void(0);" onclick="signout()">
+                    <i class="mdi mdi-logout me-2 text-primary"></i> Signout 
+                  </a>
+                  
+                  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                  <script>
+                  function signout() {
+                    Swal.fire({
+                      title: 'Are you sure?',
+                      text: "You will be signed out!",
+                      icon: 'warning',
+                      showCancelButton: true,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: 'Yes, sign out!'
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        // Replace with your sign-out URL or form submission
+                        window.location.href = '/'; 
+                      }
+                    })
+                  }
+                  </script>
+                  
             </li>
             <li class="nav-item d-none d-lg-block full-screen-link">
               <a class="nav-link">
