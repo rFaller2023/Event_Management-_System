@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AttendeeController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrganizerController;
@@ -55,4 +56,6 @@ Route::resource('organizer', OrganizerController::class);
 Route::resource('schedule', ScheduleController::class);
 Route::resource('ticket', TicketController::class);
 Route::resource('about', AboutController::class);
+
+Route::resource('/', FrontendController::class);
 // Route::get('/login', [LoginController::class, 'loginUser']);

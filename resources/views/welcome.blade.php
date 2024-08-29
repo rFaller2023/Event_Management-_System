@@ -90,27 +90,19 @@
         <div class="row">
           <div class="col-lg-6">
             <h2>About The Event</h2>
-            <p>Join us for Evenet, a fun and exciting event where you can enjoy music, learn something new, or meet interesting people.
-
-                The event will take place on [date] at [location]. It’s a great opportunity to experience amazing performances, connect with others, or discover something new.
-
-                Everyone is welcome, and we can't wait to see you there!Join us for Evenet, a fun and exciting gathering where you can experience live music, interesting talks, creative workshops, or networking opportunities.
-
-                Evenet will take place on August 31, 2024 at R.V Fulache St. Hilongos, Leyte . This event is a great chance to meet new people, learn something new, or simply have a good time.
-
-                Everyone is welcome, and we're excited to have you with us! Don't miss out on this opportunity to be part of something special.
-
-                </p>
+            @foreach($abouts as $about)
+            <p>{{ $about->abouts_description }} </p>
           </div>
           <div class="col-lg-3">
-            <h3>Where</h3>
-            <p>R.V Fulache St. Hilongos, Leyte</p>
+            <h3>Location</h3>
+            <p>{{ $about->abouts_location }}</p>
           </div>
           <div class="col-lg-3">
-            <h3>When</h3>
-            <p>Monday to Wednesday<br>10-12 August</p>
+            <h3>Date</h3>
+            <p>{{ $about->abouts_date }}</p>
           </div>
         </div>
+        @endforeach
       </div>
     </section>
 
@@ -220,7 +212,7 @@
 
     </section>
 
-  
+
 
     <!--==========================
       Venue Section
@@ -323,7 +315,7 @@
 
     </section>
 
-   
+
     <!--==========================
       Sponsors Section
     ============================-->
@@ -390,7 +382,7 @@
 
     </section>
 
-    
+
 
     <!--==========================
       Buy Ticket Section

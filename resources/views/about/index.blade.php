@@ -42,7 +42,7 @@
             <td>{{ $about->id }}</td>
             <td>{{ $about->description }}</td>
             <td>{{ $about->location }}</td>
-            <td>{{ $about->date }}</td>
+            <td>{{ $about->date }}</ td>
             <td>
                 <form action="{{ route('about.destroy', $about->id) }}" method="POST">
                     {{-- @if(Auth::User()->role == 'admin') --}}
