@@ -252,7 +252,7 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                  <img src="{{asset('assets/images/faces/face.jfif')}}" alt="profile" />
+                  <img src="{{asset('assets/images/faces/face23.jpg')}}" alt="profile" />
                   <span class="login-status online"></span>
                   <!--change to offline or busy as needed-->
                 </div>
