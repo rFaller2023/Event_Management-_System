@@ -35,42 +35,37 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    <div class = "table-responsive">
-    <table class="table table-bordered">
-        <tr>
-            <th>#</th>
-            {{-- <th>Role</th> --}}
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            {{-- <th>Password</th> --}}
-            <th width="280px">Action</th>
-        </tr>
 
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th width="280px">Action</th>
+            </tr>
 
-        <tr>
             @foreach($user as $users)
-            {{-- @if($users->role == 'spectator') --}}
-            {{-- <td>{{++$i}}</td> --}}
-            <td>{{$users->id}}</td>
-            {{-- <td>{{$users->role}}</td> --}}
-            <td>{{$users->name}}</td>
-            <td>{{$users->email}}</td>
-            <td>{{$users->role_name}}</td>
+            <tr>
+                <td>{{ $users->id }}</td>
+                <td>{{ $users->name }}</td>
+                <td>{{ $users->email }}</td>
+                <td>{{ $users->role_name }}</td>
 
-            <td>
-                <form action="{{route('user.destroy', $users->id)}}" method="POST">
-                    <a class="btn btn-primary" href="{{route('user.edit', $users->id)}}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </td>
-        </tr>
-        {{-- @endif --}}
-        @endforeach
-    </table>
+                <td>
+                    <form id="delete-form-{{ $users->id }}" action="{{ route('user.destroy', $users->id) }}" method="POST">
+                        <a class="btn btn-primary" href="{{ route('user.edit', $users->id) }}">Edit</a>
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $users->id }})">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </table>
     </div>
+
     <div class="pull-right">
         <a class="btn btn-primary" href="{{ route('home') }}">Back</a>
     </div>
@@ -89,6 +84,7 @@ function confirmDelete(userId) {
         cancelButtonText: 'Cancel'
     }).then((result) => {
         if (result.isConfirmed) {
+            // Submit the form with the corresponding user ID
             document.getElementById('delete-form-' + userId).submit();
         }
     });

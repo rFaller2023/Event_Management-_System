@@ -264,7 +264,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="{{route('home')}}">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -350,8 +350,9 @@
               <h3 class="page-title">
                 {{-- <span class="page-title-icon bg-gradient-primary text-white me-2">
                   <i class="mdi mdi-home"></i>
-
+                
                 </span> Dashboard --}}
+              
 
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
