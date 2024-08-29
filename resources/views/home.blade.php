@@ -45,7 +45,7 @@
             body: JSON.stringify({
               user_id: userId
             })
-          }}
+          }})
         }).then(response => response.json())
         .then(response => {
           let Uri = window.location.hostname;
@@ -62,7 +62,7 @@
             document.getElementById('roleName').textContent = 'Organizer';
           } else if (response.role_id == 3) {
             document.getElementById('roleName').textContent = 'Attendee';
-          }
+        }
         })
     </script>
 
