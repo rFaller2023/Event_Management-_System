@@ -22,7 +22,7 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
     <script>
-        const token = localStorage.getItem('accessToken');
+        const token = localStorage.getItem('token');
 
         if (!token) {
             window.location.href = '/';
@@ -80,9 +80,7 @@
                   <p class="mb-1 text-black"></p>
                 </div>
               </a>
-              <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                {{-- <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a> --}}
+              <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown"> 
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="javascript:void(0);" onclick="signout()">
                     <i class="mdi mdi-logout me-2 text-primary"></i> Signout 
@@ -231,7 +229,7 @@
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">Rosemarie D. Faller</span>
+                  <span class="font-weight-bold mb-2" id="fullName">Rosemarie D. Faller</span>
                   <span class="text-secondary text-small">Project Manager</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
