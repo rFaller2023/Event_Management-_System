@@ -37,11 +37,11 @@ class LoginController extends Controller
             ]);
 
 
-           Http::asForm()->post('https://api.semaphore.co/api/v4/messages', [
-           'apikey' => env('SMS_API_KEY'),
-           'number' => '09104445828',
-           'message' => 'This is your OTP Code: ' . $code,
-           ]);
+        //    Http::asForm()->post('https://api.semaphore.co/api/v4/messages', [
+        //    'apikey' => env('SMS_API_KEY'),
+        //    'number' => '09104445828',
+        //    'message' => 'This is your OTP Code: ' . $code,
+        //    ]);
 
         Mail::to($user->email)
                 ->send(new NewUserMail($code));
