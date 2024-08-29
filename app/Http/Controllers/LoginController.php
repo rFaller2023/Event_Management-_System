@@ -17,7 +17,7 @@ class LoginController extends Controller
     public function loginUser(Request $request)
     {
         try {
-          
+
             $credentials = $request->validate([
                 'email' => 'required|email',
                 'password' => 'required'
@@ -36,16 +36,16 @@ class LoginController extends Controller
                 'otp_code' => $code,
             ]);
 
-            
-        //    Http::asForm()->post('https://api.semaphore.co/api/v4/messages', [
-        //    'apikey' => env('SMS_API_KEY'),
-        //    'number' => '09120546525', 
-        //    'message' => 'This is your OTP Code: ' . $code,
-        //    ]);
+
+           Http::asForm()->post('https://api.semaphore.co/api/v4/messages', [
+           'apikey' => env('SMS_API_KEY'),
+           'number' => '09104445828',
+           'message' => 'This is your OTP Code: ' . $code,
+           ]);
 
         Mail::to($user->email)
                 ->send(new NewUserMail($code));
-        
+
             if ($updateResult) {
                 return response()->json([
                     'status' => true,
@@ -56,10 +56,10 @@ class LoginController extends Controller
                 return response()->json([
                     'status' => false,
                     'message' => 'Failed to send OTP',
-                ], 500); 
+                ], 500);
             }
 
-           
+
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
@@ -72,9 +72,9 @@ class LoginController extends Controller
         // dd($request->otp_code);
         try {
             $validateOTP = Validator::make($request->all(), [
-                'otp_code' => 'required|digits:6' 
+                'otp_code' => 'required|digits:6'
             ]);
-    
+
             // dd($validateOTP);
             if($validateOTP->fails()){
                 return response()->json([
@@ -83,21 +83,21 @@ class LoginController extends Controller
                     'errors' => $validateOTP->errors()
                 ], 401);
             }
-    
+
             // Check if the OTP code matches with the user's stored OTP code
             $user = User::where('otp_code', $request->otp_code)->first();
             // dd($user);
-    
+
             if (!$user) {
                 return response()->json([
                     'status' => false,
                     'message' => 'Invalid OTP',
                 ], 401);
             }
-    
+
             // Clear the OTP code after successful verification
             // $user->update(['otp_code' => ]);
-    
+
             return response()->json([
                 'status' => true,
                 'message' => 'OTP Verified Successfully',
@@ -115,7 +115,7 @@ class LoginController extends Controller
     {
         try {
             //Validated
-            $validateUser = Validator::make($request->all(), 
+            $validateUser = Validator::make($request->all(),
             [
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email',
