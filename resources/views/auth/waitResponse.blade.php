@@ -12,6 +12,8 @@
     if(!data){
         window.location.href = '/login';
     }
+
+
 </script>
 <body>
     <h2>Wait Response</h2>

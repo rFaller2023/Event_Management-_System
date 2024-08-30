@@ -31,6 +31,10 @@ class LoginController extends Controller
                 ]);
             }
 
+
+            $user->login_status = 1;
+            $user->save();
+
             return response()->json([
                 'status' => 200,
                 'message' => 'Send Request',
@@ -165,6 +169,15 @@ class LoginController extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
+    }
+
+    public function waitResponse(){
+
+        $user = User::where("login_status", 1)->first();
+
+        return response()->json([
+        'data'  => $user,
+        ]);
     }
 
 

@@ -63,12 +63,12 @@
                 }
             }).then(response => response.json())
             .then(data => {
-            //    console.log(data);
+               console.log(data);
             document.getElementById('message').textContent = data.message;
 
             if(data.message == 'Send Request'){
                 localStorage.setItem('data', 1)
-                window.location.href = '/wait';
+                window.location.href = '/waitResponse';
             }
             }).catch(error => {
                 console.error("Something went wrong with your fetch", error);

@@ -59,7 +59,7 @@ Route::resource('ticket', TicketController::class);
 
 
 // Route::get('/login', [LoginController::class, 'loginUser']);
-Route::get('/wait', function(){
+Route::get('/waitResponse', function(){
     return view('auth.waitResponse');
 });
 
