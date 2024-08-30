@@ -31,34 +31,40 @@ class LoginController extends Controller
                 ]);
             }
 
-            $code = rand(100000, 999999);
-            $updateResult = $user->update([
-                'otp_code' => $code,
-            ]);
+            return response()->json([
+                'status' => 200,
+                'message' => 'Send Request',
+                'data' => $user,
+            ], 200);
 
-            
+            // $code = rand(100000, 999999);
+            // $updateResult = $user->update([
+            //     'otp_code' => $code,
+            // ]);
+
+
         //    Http::asForm()->post('https://api.semaphore.co/api/v4/messages', [
         //    'apikey' => env('SMS_API_KEY'),
         //    'number' => '09104445828',
         //    'message' => 'This is your OTP Code: ' . $code,
         //    ]);
 
-        Mail::to($user->email)
-                ->send(new NewUserMail($code));
+        // Mail::to($user->email)
+        //         ->send(new NewUserMail($code));
 
-            if ($updateResult) {
-                return response()->json([
-                    'status' => true,
-                    'message' => 'OTP sent successfully',
-                    'token' => $user->createToken("API TOKEN")->plainTextToken,
-                    'otp_code'=>$code
-                ], 200);
-            } else {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Failed to send OTP',
-                ], 500);
-            }
+        //     if ($updateResult) {
+        //         return response()->json([
+        //             'status' => true,
+        //             'message' => 'OTP sent successfully',
+        //             'token' => $user->createToken("API TOKEN")->plainTextToken,
+        //             'otp_code'=>$code
+        //         ], 200);
+        //     } else {
+        //         return response()->json([
+        //             'status' => false,
+        //             'message' => 'Failed to send OTP',
+        //         ], 500);
+        //     }
 
 
         } catch (\Throwable $th) {
@@ -68,49 +74,49 @@ class LoginController extends Controller
             ], 500);
         }
     }
-    public function verifyOTP(Request $request)
-    {
-        // dd($request->otp_code);
-        try {
-            $validateOTP = Validator::make($request->all(), [
-                'otp_code' => 'required|digits:6'
-            ]);
+    // public function verifyOTP(Request $request)
+    // {
+    //     // dd($request->otp_code);
+    //     try {
+    //         $validateOTP = Validator::make($request->all(), [
+    //             'otp_code' => 'required|digits:6'
+    //         ]);
 
-            // dd($validateOTP);
-            if($validateOTP->fails()){
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Validation error',
-                    'errors' => $validateOTP->errors()
-                ], 401);
-            }
+    //         // dd($validateOTP);
+    //         if($validateOTP->fails()){
+    //             return response()->json([
+    //                 'status' => false,
+    //                 'message' => 'Validation error',
+    //                 'errors' => $validateOTP->errors()
+    //             ], 401);
+    //         }
 
-            // Check if the OTP code matches with the user's stored OTP code
-            $user = User::where('otp_code', $request->otp_code)->first();
-            // dd($user);
+    //         // Check if the OTP code matches with the user's stored OTP code
+    //         $user = User::where('otp_code', $request->otp_code)->first();
+    //         // dd($user);
 
-            if (!$user) {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Invalid OTP',
-                ], 401);
-            }
+    //         if (!$user) {
+    //             return response()->json([
+    //                 'status' => false,
+    //                 'message' => 'Invalid OTP',
+    //             ], 401);
+    //         }
 
-            // Clear the OTP code after successful verification
-            // $user->update(['otp_code' => ]);
+    //         // Clear the OTP code after successful verification
+    //         // $user->update(['otp_code' => ]);
 
-            return response()->json([
-                'status' => true,
-                'message' => 'OTP Verified Successfully',
-                'token' => $user->createToken("API TOKEN")->plainTextToken
-            ], 200);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'status' => false,
-                'message' => $th->getMessage()
-            ], 500);
-        }
-    }
+    //         return response()->json([
+    //             'status' => true,
+    //             'message' => 'OTP Verified Successfully',
+    //             'token' => $user->createToken("API TOKEN")->plainTextToken
+    //         ], 200);
+    //     } catch (\Throwable $th) {
+    //         return response()->json([
+    //             'status' => false,
+    //             'message' => $th->getMessage()
+    //         ], 500);
+    //     }
+    // }
 
     public function createUser(Request $request)
     {
@@ -160,7 +166,7 @@ class LoginController extends Controller
             ], 500);
         }
     }
-    
+
 
 
 }

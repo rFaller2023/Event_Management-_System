@@ -34,7 +34,13 @@
     License: https://bootstrapmade.com/license/
   ======================================================= -->
 </head>
+<script>
+    let data = localStorage.getItem('data');
 
+    if(data){
+        localStorage.removeItem('data');
+    }
+</script>
 <body>
 
   <!--==========================
@@ -50,7 +56,7 @@
         <a href="#intro" class="scrollto">
           <img src="img/PLANPATH.png" alt="" title="" style="width: 150px; height:500px ;">
         </a>
-      
+
       </div>
 
       <nav id="nav-menu-container">
@@ -104,7 +110,7 @@
 
   </section>
 
-    
+
 
 
     <!--==========================
