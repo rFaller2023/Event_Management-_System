@@ -400,7 +400,7 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{asset('assets/vendors/js/vendor.bundle.base.js')}}"></script>
+    <script src="{{asset('assets/vendors/js/vendor.bundle.base.js')}}"></script>3
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="{{asset('assets/vendors/chart.js/chart.umd.js')}}"></script>

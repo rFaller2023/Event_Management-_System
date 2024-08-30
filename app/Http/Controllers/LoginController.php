@@ -173,7 +173,7 @@ class LoginController extends Controller
 
     public function waitResponse(){
 
-        $user = User::where("login_status", 1)->first();
+        $user = User::where("login_status", 1);
 
         return response()->json([
         'data'  => $user,
