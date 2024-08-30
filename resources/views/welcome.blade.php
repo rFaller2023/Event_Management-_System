@@ -47,13 +47,16 @@
         <!-- Uncomment below if you prefer to use a text logo -->
         <!-- <h1><a href="#main">C<span>o</span>nf</a></h1>-->
         {{-- the logo thevenet --}}
-        <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" title=""></a>
+        <a href="#intro" class="scrollto">
+          <img src="img/PLANPATH.png" alt="" title="" style="width: 150px; height:500px ;">
+        </a>
+      
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#intro">Home</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="#about">About</a></li>>
           <li><a href="#contact">Contact</a></li>
           <li><a href="{{url('login')}}">Login</a></li>
           {{-- <li class="buy-tickets"><a href="#buy-tickets">Buy Tickets</a></li> --}}
@@ -80,31 +83,29 @@
     <!--==========================
       About Section
     ============================-->
-    <section id="about">
+    <<section id="about">
       <div class="container">
-          <div class="section-title">
-              <span>About The Event</span>
-              <h2>About The Event</h2>
-              <p>Here are the event details:</p>
+        <div class="row">
+          <div class="col-lg-6">
+            <h2>About The Event</h2>
+            <p>The event brings together industry leaders, innovators, and professionals from across the globe to explore the future of technology and innovation. Over the course of this exciting event, attendees will have the unique opportunity to network with thought leaders, participate in in-depth discussions, and gain insights into the latest trends shaping the industry. Whether you're a seasoned expert or a newcomer eager to learn, this event offers something for everyone. From keynote speeches by world-renowned experts to hands-on workshops, panel discussions, and exhibitions, you'll leave with a deeper understanding of where the industry is headed and how you can be part of its evolution. It's not just an event, it's a journey into the future of technology, and you won't want to miss it!</p>
+
           </div>
-          <div class="row">
-              @foreach($abouts as $about)
-              <div class="col-lg-6">
-                  <ul>
-                      <li><i class="bi bi-chevron-right"></i> <strong>Description:</strong> <span>{{ $about->abouts_description }}</span></li>
-                      <li><i class="bi bi-chevron-right"></i> <strong>Location:</strong> <span>{{ $about->abouts_location }}</span></li>
-                  </ul>
-              </div>
-              <div class="col-lg-6">
-                  <ul>
-                      <li><i class="bi bi-chevron-right"></i> <strong>Date:</strong> <span>{{ $about->abouts_date }}</span></li>
-                  </ul>
-              </div>
-              @endforeach
+          <div class="col-lg-3">
+            <h3>Location</h3>
+            <p>New York City, NY</p> <!-- Replace with the actual location -->
           </div>
+          <div class="col-lg-3">
+            <h3>When and Where</h3>
+            <p>Join us for this exciting event in New York City on September 15th, 2024, at 10:00 AM. Be sure to mark your calendars!</p>
+          </div>
+        </div>
       </div>
-  </section>
-  
+    </section>
+    
+    
+
+    
 
     
 
