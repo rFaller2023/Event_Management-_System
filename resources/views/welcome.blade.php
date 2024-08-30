@@ -104,13 +104,7 @@
           </div>
       </div>
   </section>
-  
 
-    
-
-
-
-    
     <!--==========================
       Contact Section
     ============================-->
@@ -182,7 +176,6 @@
 
   </main>
 
-
   <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 
   <!-- JavaScript Libraries -->
@@ -201,6 +194,29 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+
+  <!-- Restrict Access Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Log the current path and hash for debugging
+      const currentPath = window.location.pathname;
+      const currentHash = window.location.hash;
+
+      console.log("Current Path:", currentPath);
+      console.log("Current Hash:", currentHash);
+
+      // Assuming '/welcome' is the path for the welcome page and '#intro' is the hash for the home section
+      if (currentPath === '/welcome' && currentHash === "#intro") {
+        // Log a message before redirecting
+        console.log("Redirecting to 404...");
+
+        // User is trying to access the home section while on the welcome page
+        alert("You cannot access the Home page from here.");
+        window.location.href = '/404';  // Redirect to a 404 page or another page you prefer
+      }
+    });
+  </script>
+
 </body>
 
 </html>

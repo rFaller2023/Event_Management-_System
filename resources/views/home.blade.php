@@ -21,49 +21,142 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
-    {{-- <script>
-        const token = localStorage.getItem('token');
-
-        if (!token) {
-            window.location.href = '/';
-        } --}}
 
     <script>
-    const token = localStorage.getItem('TOKEN');
+    const token = localStorage.getItem('token');
     // console.log(localStorage.getItem('id'));
     if (!token) {
       window.location.href = '/';
     }
     const userId = localStorage.getItem('id');
     // console.log(userId);
-    document.addEventListener( "DOMContentLoaded", function() {
-      fetch('/api/user', {
-          method: 'GET',
-          headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('TOKEN'),
+    document.addEventListener("DOMContentLoaded", function() {
+    fetch('api/user', {
+        method: 'GET',
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
             Accept: 'application/json',
             body: JSON.stringify({
-              user_id: userId
+                user_id: userId
             })
-          }})
-        }).then(response => response.json())
-        .then(response => {
-          let Uri = window.location.hostname;
-          if(response.profile_image){
-            document.getElementById('userID').innerHTML =  <img  width="35" src={{asset('storage/${response.profile_image}')}} height="35" class="rounded-circle">;
-          }else{
-            document.getElementById('userID').innerHTML =  <img  width="35" src={{asset("images/profile_default.png")}} height="35" class="rounded-circle">;
-          }
-          console.log(Uri);
-          // const userImage = {{asset('${response.profile_image}')}} ? {{asset('${response.profile_image}')}} : {{asset('images/profile_default.png')}};
-          if (response.role_id == 1) {
-            document.getElementById('roleName').textContent = 'Admin';
-          } else if (response.role_id == 2) {
-            document.getElementById('roleName').textContent = 'Organizer';
-          } else if (response.role_id == 3) {
-            document.getElementById('roleName').textContent = 'Attendee';
         }
-        })
+    }).then(response => response.json())
+    .then(response => {
+        console.log(response);
+        if (response.role_name === 'organizer') {
+            document.getElementById('sideOrganizer').innerHTML = `
+                <li class="nav-item">
+                  <a class="nav-link" href="/event">Manage Events</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/venue">Venues</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/attendee">Attendees</a>
+                  <div class="collapse" id="charts">
+                    <ul class="nav flex-column sub-menu">
+                      <li class="nav-item">
+                        <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/schedule">Schedules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/ticket">Ticket</a>
+                </li>`;
+        } else if (response.role_name === 'guest') {
+            document.getElementById('sideGuest').innerHTML = `
+                <li class="nav-item">
+                  <a class="nav-link" href="/event">Manage Events</a>
+                </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="/venue">Venues</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/ticket">Ticket</a>
+                </li>`;
+        } else if (response.role_name === 'attendee') {
+            document.getElementById('sideAttendee').innerHTML = `
+                <li class="nav-item">
+                  <a class="nav-link" href="/event">Manage Events</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/venue">Venues</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/schedule">Schedules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/ticket">Ticket</a>
+                </li>`;
+        } else if (response.role_name === 'Admin') {
+            document.getElementById('sideAdmin').innerHTML = `
+                <li class="nav-item">
+                  <a class="nav-link" href="/user">Users</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/about">Abouts</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/event">Manage Events</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/venue">Venues</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/attendee">Attendees</a>
+                  <div class="collapse" id="charts">
+                    <ul class="nav flex-column sub-menu">
+                      <li class="nav-item">
+                        <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/organizer">Organizers</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/schedule">Schedules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/ticket">Ticket</a>
+                </li>`;
+        }
+    });
+});
+
+    //   fetch('/api/user', {
+    //       method: 'GET',
+    //       headers: {
+    //         Authorization: 'Bearer ' + localStorage.getItem('token'),
+    //         Accept: 'application/json',
+    //         body: JSON.stringify({
+    //           user_id: userId
+    //         })
+    //       }})
+    //     }).then(response => response.json())
+    //     .then(response => {
+    //     console.log(response);
+    //       let Uri = window.location.hostname;
+    //       if(response.profile_image){
+    //         document.getElementById('userID').innerHTML =  `<img  width="35" src={{asset('storage/${response.profile_image}')}} height="35" class="rounded-circle">;`
+    //       }else{
+    //         document.getElementById('userID').innerHTML =  `<img  width="35" src={{asset("images/profile_default.png")}} height="35" class="rounded-circle">;`
+    //       }
+    //       console.log(Uri);
+
+    //       if (response.role_id == 1) {
+    //         document.getElementById('roleName').textContent = 'Admin';
+    //       } else if (response.role_id == 2) {
+    //         document.getElementById('roleName').textContent = 'Organizer';
+    //       } else if (response.role_id == 3) {
+    //         document.getElementById('roleName').textContent = 'Attendee';
+    //     }
+
     </script>
 
   </head>
@@ -127,6 +220,7 @@
                       confirmButtonText: 'Yes, sign out!'
                     }).then((result) => {
                       if (result.isConfirmed) {
+                        localStorage.removeItem('token');
                         // Replace with your sign-out URL or form submission
                         window.location.href = '/';
                       }
@@ -269,76 +363,10 @@
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="{{route('user.index')}}" aria-expanded="false" aria-controls="ui-basic">
-                <a href="/user">Users</a>
-                {{-- <i class="menu-arrow"></i> --}}
-                {{-- <i class="mdi mdi-crosshairs-gps menu-icon"></i>[] --}}
-              </a>
-
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="{{route('about.index')}}" aria-expanded="false" aria-controls="ui-basic">
-                  <a href="/about">Abouts</a>
-                  {{-- <i class="menu-arrow"></i> --}}
-                  {{-- <i class="mdi mdi-crosshairs-gps menu-icon"></i>[] --}}
-                </a>
-
-              </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="{{route('event.index')}}" aria-expanded="false" aria-controls="manage_events">
-                {{-- <span class="menu-title">Manage Events</span> --}}
-                <a href="/event">Manage Events</a>
-                {{-- <i class="mdi mdi-contacts menu-icon"></i> --}}
-              </a>
-
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="{{route('venue.index')}}" aria-expanded="false" aria-controls="venues">
-                {{-- <span class="menu-title">Attendees</span> --}}
-                <a href="/venue">Venues</a>
-                {{-- <i class="mdi mdi-format-list-bulleted menu-icon"></i> --}}
-              </a>
-
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="{{route('attendee.index')}}" aria-expanded="false" aria-controls="charts">
-                <a href="/attendee">Attendees</a>
-                {{-- <i class="mdi mdi-chart-bar menu-icon"></i> --}}
-              </a>
-              <div class="collapse" id="charts">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="{{route('organizer.index')}}" aria-expanded="false" aria-controls="tables">
-                {{-- <span class="menu-title">Organizers</span> --}}
-                <a href="/organizer">Organizers</a>
-                {{-- <i class="mdi mdi-table-large menu-icon"></i> --}}
-              </a>
-
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="{{route('schedule.index')}}" aria-expanded="false" aria-controls="auth">
-                {{-- <span class="menu-title">Venues</span> --}}
-                <a href="/schedule">Schedules</a>
-                {{-- <i class="menu-arrow"></i> --}}
-                {{-- <i class="mdi mdi-lock menu-icon"></i> --}}
-              </a>
-
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="{{route('ticket.index')}}" aria-expanded="false" aria-controls="auth">
-                {{-- <span class="menu-title">Venues</span> --}}
-                <a href="/ticket">Ticket</a>
-                {{-- <i class="menu-arrow"></i> --}}
-                {{-- <i class="mdi mdi-lock menu-icon"></i> --}}
-              </a>
-
+           <div id="sideOrganizer"></div>
+           <div id="sideGuest"></div>
+           <div id="sideAttendee"></div>
+           <div id="sideAdmin"></div>
 
           </ul>
         </nav>
@@ -350,9 +378,9 @@
               <h3 class="page-title">
                 {{-- <span class="page-title-icon bg-gradient-primary text-white me-2">
                   <i class="mdi mdi-home"></i>
-                
+
                 </span> Dashboard --}}
-              
+
 
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->

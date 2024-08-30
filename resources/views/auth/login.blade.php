@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-
-
 </head>
+<script>
+    const token = localStorage.getItem('token');
+
+    if(token){
+        window.location.href = '/home';
+    }
+</script>
 <body>
     <div class="login-container">
         <h2>Login</h2>
@@ -109,6 +114,16 @@
                 passwordInput.type = 'text';
             } else {
                 passwordInput.type = 'password';
+            }
+        });
+
+        // Redirect if user tries to access welcome or home from the login form
+        document.addEventListener("DOMContentLoaded", function() {
+            const currentPath = window.location.pathname.toLowerCase();
+
+            // Check if user tries to access welcome or home
+            if (currentPath === '/welcome' || currentPath === '/home') {
+                window.location.href = '/404';  // Redirect to a 404 page
             }
         });
     </script>
