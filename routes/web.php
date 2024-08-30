@@ -55,7 +55,7 @@ Route::resource('attendee', AttendeeController::class);
 Route::resource('organizer', OrganizerController::class);
 Route::resource('schedule', ScheduleController::class);
 Route::resource('ticket', TicketController::class);
-Route::resource('about', AboutController::class);
 
-Route::resource('/', FrontendController::class);
+
+
 // Route::get('/login', [LoginController::class, 'loginUser']);

@@ -1,12 +1,6 @@
 @extends('home')
 @section('table')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Ticket Table</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <!-- SweetAlert2 Script -->
@@ -51,10 +45,10 @@
                 <td>
                     <form id="delete-form-{{ $ticket->id }}" action="{{ route('ticket.destroy', $ticket->id) }}" method="POST" style="display: inline;">
                         {{-- @if(Auth::User()->role == 'admin') --}}
-                        <a class="btn btn-primary" href="{{ route('ticket.edit', $ticket->id) }}">Edit</a>
+                        <a class="btn btn-sm btn-primary" href="{{ route('ticket.edit', $ticket->id) }}">Edit</a>
                         @csrf
                         @method('DELETE')
-                        <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $ticket->id }})">Delete</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $ticket->id }})">Delete</button>
                     </form>
                     {{-- @endif --}}
                 </td>
@@ -86,6 +80,5 @@ function confirmDelete(ticketId) {
 }
 </script>
 
-</body>
-</html>
+
 @endsection

@@ -1,20 +1,12 @@
 @extends('home')
 @section('table')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Ticket Form - Laravel 10 CRUD</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
 
 <div class="container">
 
     <div class="row">
         <div class="col-lg-12">
             <h2 class="float-left">Edit Ticket Form</h2>
-            {{-- <a class="btn btn-danger float-right" href="{{ route('tickets.index') }}"> Back</a> --}}
+            
         </div>
     </div>
 
@@ -75,6 +67,5 @@
     </form>
 </div>
 
-</body>
-</html>
+
 @endsection

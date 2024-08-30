@@ -1,13 +1,6 @@
 @extends('home')
 @section('table')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Venue Information - Laravel 10 CRUD</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+
 
 <div class="container mt-4">
     <div class="row">
@@ -116,6 +109,5 @@
     </form>
 </div>
 
-</body>
-</html>
+
 @endsection

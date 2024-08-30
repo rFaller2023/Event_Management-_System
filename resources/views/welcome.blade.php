@@ -70,7 +70,7 @@
   ============================-->
   <section id="intro">
     <div class="intro-container wow fadeIn">
-      <h1 class="mb-4 pb-0">The Annual<br><span>EVENT</span> </h1>
+      <h1 class="mb-4 pb-0">All-in-One <br><span>EVENT SHOWCASE</span> </h1>
       {{-- <p class="mb-4 pb-0">10-12 December, Downtown Conference Center, New York</p> --}}
       {{-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
         data-autoplay="true"></a> --}}
@@ -101,15 +101,11 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
+
   </section>
-=======
-    </section>
-    
-    
 
     
->>>>>>> 608adc6a19c336a2b039b407595e01336b31cf12
+
 
     <!--==========================
       Contact Section

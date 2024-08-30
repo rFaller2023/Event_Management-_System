@@ -1,13 +1,6 @@
 @extends('home')
 @section('table')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Users</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -55,10 +48,10 @@
 
                 <td>
                     <form id="delete-form-{{ $users->id }}" action="{{ route('user.destroy', $users->id) }}" method="POST">
-                        <a class="btn btn-primary" href="{{ route('user.edit', $users->id) }}">Edit</a>
+                        <a class="btn btn-sm btn-primary" href="{{ route('user.edit', $users->id) }}">Edit</a>
                         @csrf
                         @method('DELETE')
-                        <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $users->id }})">Delete</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $users->id }})">Delete</button>
                     </form>
                 </td>
             </tr>
@@ -91,6 +84,4 @@ function confirmDelete(userId) {
 }
 </script>
 
-</body>
-</html>
 @endsection

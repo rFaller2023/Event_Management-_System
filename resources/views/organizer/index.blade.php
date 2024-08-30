@@ -1,18 +1,11 @@
 @extends('home')
 @section('table')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Organizers Table</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <!-- SweetAlert2 Script -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
+
 
 <div class="container mt-2">
     <div class="row">
@@ -50,10 +43,10 @@
                 <td>
                     {{-- @if(Auth::user()->role == 'admin') --}}
                     <form id="delete-form-{{ $organizer->id }}" action="{{ route('organizer.destroy', $organizer->id) }}" method="POST" style="display: inline;">
-                        <a class="btn btn-primary" href="{{ route('organizer.edit', $organizer->id) }}">Edit</a>
+                        <a class="btn btn-sm btn-primary" href="{{ route('organizer.edit', $organizer->id) }}">Edit</a>
                         @csrf
                         @method('DELETE')
-                        <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $organizer->id }})">Delete</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $organizer->id }})">Delete</button>
                     </form>
                     {{-- @endif --}}
                 </td>
@@ -86,6 +79,5 @@ function confirmDelete(organizerId) {
 }
 </script>
 
-</body>
-</html>
+
 @endsection

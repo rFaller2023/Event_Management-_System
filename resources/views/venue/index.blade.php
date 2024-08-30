@@ -1,14 +1,8 @@
 @extends('home')
 @section('table')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Venues Table</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
+
 
 <div class="container mt-2">
     <div class="row">
@@ -61,10 +55,10 @@
                 <td>
                     {{-- @if(Auth::user()->role == 'admin') --}}
                     <form id="delete-form-{{ $venue->id }}" action="{{ route('venue.destroy', $venue->id) }}" method="POST" style="display: inline;">
-                        <a class="btn btn-primary" href="{{ route('venue.edit', $venue->id) }}">Edit</a>
+                        <a class="btn btn-sm btn-primary" href="{{ route('venue.edit', $venue->id) }}">Edit</a>
                         @csrf
                         @method('DELETE')
-                        <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $venue->id }})">Delete</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $venue->id }})">Delete</button>
                     </form>
                     {{-- @endif --}}
                 </td>
@@ -99,6 +93,5 @@ function confirmDelete(venueId) {
 }
 </script>
 
-</body>
-</html>
+
 @endsection

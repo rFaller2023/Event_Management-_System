@@ -31,7 +31,8 @@
     const userId = localStorage.getItem('id');
     // console.log(userId);
     document.addEventListener("DOMContentLoaded", function() {
-    fetch('api/user', {
+      //Production must have url https://planpath.online/api/user
+    fetch('http://127.0.0.1:8000/api/user', {
         method: 'GET',
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -43,6 +44,9 @@
     }).then(response => response.json())
     .then(response => {
         console.log(response);
+        document.getElementById('RoleName').textContent = response.role_name;
+        document.getElementById('Name').textContent = response.name;
+
         if (response.role_name === 'organizer') {
             document.getElementById('sideOrganizer').innerHTML = `
                 <li class="nav-item">
@@ -96,9 +100,6 @@
             document.getElementById('sideAdmin').innerHTML = `
                 <li class="nav-item">
                   <a class="nav-link" href="/user">Users</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/about">Abouts</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/event">Manage Events</a>
@@ -182,8 +183,8 @@
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-          <a class="navbar-brand brand-logo" href="index.html"><img src="{{asset('assets/images/PLANPATH.JPG" alt="logo')}}"/></a>
-          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('assets/images/PLANPATH.jpg" alt="logo')}}" /></a>
+          <a class="navbar-brand brand-logo" href="index.html"><img src='{{asset("img/PLANPATH.png")}}' /></a>
+          {{-- <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('/img/PLANPATH.png" alt="logo')}}" /></a> --}}
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -195,7 +196,7 @@
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
                   <img src="{{asset('assets/images/faces/face23.jpg')}}" alt="image">
-                  <span class="availability-status online"></span>
+                  <span class="availability-status online" id="Name"></span>
                 </div>
                 <div class="nav-profile-text">
                   <p class="mb-1 text-black"></p>
@@ -347,7 +348,7 @@
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
                   <img src="{{asset('assets/images/faces/face23.jpg')}}" alt="profile" />
-                  <span class="login-status online"></span>
+                  <span class="login-status online" id="RoleName"></span>
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">

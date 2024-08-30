@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EventNotification;
 use App\Models\Event;
 use App\Models\Organizer;
+use App\Models\User;
 use App\Models\Venue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class EventController extends Controller
 {
@@ -37,9 +40,18 @@ class EventController extends Controller
     public function store(Request $request)
     {
         //
-        Event::create($request->all());
-       
+        $event = Event::create($request->all());
+
+        // Get all users to notify (this can be modified based on your requirements)
+        $users = User::all(); // Or filter to a specific group of users
+    
+        // Send an email notification to each user
+        foreach ($users as $user) {
+            Mail::to($user->email)->send(new EventNotification($event, $user));
+        }
+    
         return redirect()->route('event.index');
+        
     }
 
     /**

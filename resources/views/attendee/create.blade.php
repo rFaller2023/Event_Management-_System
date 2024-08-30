@@ -53,8 +53,8 @@
 
         <div class="row">
             <div class="col-md-12 text-right">
-                <a class="btn btn-danger btn-back" href="{{ route('attendee.index') }}">Back</a>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-sm btn-danger btn-back" href="{{ route('attendee.index') }}">Back</a>
+                <button type="submit" class="btn btn-sm btn-primary">Submit</button>
             </div>
         </div>
     </form>

@@ -15,7 +15,6 @@ class ScheduleController extends Controller
     {
         //
         $schedules =  Schedule::get();
-
         return view('schedule.index', compact('schedules'));
     }
 

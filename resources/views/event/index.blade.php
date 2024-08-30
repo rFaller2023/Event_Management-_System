@@ -1,18 +1,11 @@
 @extends('home')
 @section('table')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Event Table</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <!-- SweetAlert2 Script -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
+
 
 <div class="container mt-2">
     <div class="row">
@@ -58,10 +51,10 @@
                 <td>
                     <form id="delete-form-{{ $event->id }}" action="{{ route('event.destroy', $event->id) }}" method="POST" style="display: inline;">
                         {{-- @if(Auth::User()->role == 'admin') --}}
-                        <a class="btn btn-primary" href="{{ route('event.edit', $event->id) }}">Edit</a>
+                        <a class="btn btn-sm btn-primary" href="{{ route('event.edit', $event->id) }}">Edit</a>
                         @csrf
                         @method('DELETE')
-                        <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $event->id }})">Delete</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $event->id }})">Delete</button>
                         {{-- @endif --}}
                     </form>
                 </td>
@@ -93,6 +86,5 @@ function confirmDelete(eventId) {
 }
 </script>
 
-</body>
-</html>
+
 @endsection

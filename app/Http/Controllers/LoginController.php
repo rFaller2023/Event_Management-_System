@@ -36,7 +36,7 @@ class LoginController extends Controller
                 'otp_code' => $code,
             ]);
 
-
+            
         //    Http::asForm()->post('https://api.semaphore.co/api/v4/messages', [
         //    'apikey' => env('SMS_API_KEY'),
         //    'number' => '09104445828',
@@ -50,7 +50,8 @@ class LoginController extends Controller
                 return response()->json([
                     'status' => true,
                     'message' => 'OTP sent successfully',
-                    'token' => $user->createToken("API TOKEN")->plainTextToken
+                    'token' => $user->createToken("API TOKEN")->plainTextToken,
+                    'otp_code'=>$code
                 ], 200);
             } else {
                 return response()->json([
@@ -159,6 +160,7 @@ class LoginController extends Controller
             ], 500);
         }
     }
+    
 
 
 }

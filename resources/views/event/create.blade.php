@@ -1,13 +1,5 @@
 @extends('home')
 @section('table')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Event Information - Laravel 10 CRUD</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
 
 <div class="container mt-4">
     <div class="row">
@@ -119,13 +111,12 @@
 
         <div class="row">
             <div class="col-md-12 text-right">
-                <a class="btn btn-danger btn-back" href="{{ route('event.index') }}">Back</a>
-                <button type="submit" class="btn btn-primary">{{ isset($event) ? 'Update' : 'Submit' }}</button>
+                <a class="btn btn-sm btn-danger btn-back" href="{{ route('event.index') }}">Back</a>
+                <button type="submit" class="btn btn-sm btn-primary">{{ isset($event) ? 'Update' : 'Submit' }}</button>
             </div>
         </div>
     </form>
 </div>
 
-</body>
-</html>
+
 @endsection

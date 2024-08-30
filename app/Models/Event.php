@@ -19,7 +19,7 @@ class Event extends Model
     
     ];
 
-    public function event(){
+    public function venue(){
         return $this->hasOne(Venue::class);
     }
     public function schedule()
@@ -30,6 +30,7 @@ class Event extends Model
     {
         return $this->hasMany(Ticket::class);
     }
+    
 
     
 }

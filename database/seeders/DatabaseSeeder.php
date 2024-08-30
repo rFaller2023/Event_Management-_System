@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
                 // 'address' => 'Brgy. Lamak Hilongos, Leyte',
                 'otp_code' => 1,
                 'password'=>  Hash::make('12345678'),
+                'role_name'=> 'Admin',
             ],
             [
                 'name'=>'Fred Fritz',
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
                 // 'address' => 'Mabini St. Hilongos, Leyte',
                 'otp_code' => 2,
                 'password'=>  Hash::make('12345678'),
+                'role_name'=> 'Admin',
             ]
 
             ]);

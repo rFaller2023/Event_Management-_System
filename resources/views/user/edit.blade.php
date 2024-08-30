@@ -1,16 +1,5 @@
 @extends('home')
 @section('table')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-
-    </style>
-</head>
-<body>
 
 <div class="container mt-2">
     <div class="row">
@@ -19,7 +8,7 @@
                 <h2>Edit User Form</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('user.index') }}" enctype="multipart/form-data"> Back</a>
+                <a class="btn btn-sm btn-primary" href="{{ route('user.index') }}" enctype="multipart/form-data"> Back</a>
             </div>
         </div>
     </div>
@@ -84,10 +73,9 @@
         </div>
 
 
-        <button type="submit" class="btn btn-primary ml-3">Submit</button>
+        <button type="submit" class="btn btn-sm btn-primary ml-3">Submit</button>
 
     </form>
 </div>
 @endsection
-</body>
-</html>
+
